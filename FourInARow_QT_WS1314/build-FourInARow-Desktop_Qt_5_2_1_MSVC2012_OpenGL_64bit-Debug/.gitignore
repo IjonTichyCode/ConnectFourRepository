@@ -1,3 +1,0 @@
-# ignore build artifacts in debug and release folder
-/debug/*
-/release/*
