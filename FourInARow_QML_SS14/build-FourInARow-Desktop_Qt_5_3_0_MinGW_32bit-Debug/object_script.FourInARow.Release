@@ -1,0 +1,16 @@
+INPUT(
+./release\main.o
+./release\QMLBoard.o
+./release\QMLBoardTile.o
+./release\qmlmainwindow.o
+./release\fourinarowboard.o
+./release\fourinarowgame.o
+./release\QMLPlayScreen.o
+./release\rowfield.o
+./release\FiarArtificialPlayer.o
+./release\qrc_qml.o
+./release\moc_QMLBoard.o
+./release\moc_QMLBoardTile.o
+./release\moc_qmlmainwindow.o
+./release\moc_QMLPlayScreen.o
+);

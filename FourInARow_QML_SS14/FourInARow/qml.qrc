@@ -1,0 +1,33 @@
+<RCC>
+    <qresource prefix="/">
+        <file>PlayScreen.qml</file>
+        <file>SimpleButton.qml</file>
+        <file>Board.qml</file>
+        <file>BoardTile.qml</file>
+        <file>StartScreen.qml</file>
+        <file>MainWindow.qml</file>
+        <file>Title.qml</file>
+        <file>Options.qml</file>
+        <file>NewGameScreen.qml</file>
+        <file>DragArrow.qml</file>
+        <file>style.js</file>
+        <file>OptionsSwitch.qml</file>
+        <file>resources/blackToken.png</file>
+        <file>resources/fullscreen.svg</file>
+        <file>resources/boardTile.svg</file>
+        <file>Token.qml</file>
+        <file>resources/token.svg</file>
+        <file>AspectRatioItem.qml</file>
+        <file>resources/bounce0.wav</file>
+        <file>resources/bounce1.wav</file>
+        <file>resources/slide0.wav</file>
+        <file>resources/slide1.wav</file>
+        <file>resources/token.png</file>
+        <file>Seperator.qml</file>
+        <file>DesignSelector.qml</file>
+        <file>MainWindowItem.qml</file>
+        <file>resources/antialias.png</file>
+        <file>HighscoreScreen.qml</file>
+        <file>CloseButton.qml</file>
+    </qresource>
+</RCC>
