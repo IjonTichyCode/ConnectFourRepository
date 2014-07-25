@@ -1,0 +1,62 @@
+drop table players;
+drop table games;
+
+create table players (name text, iscpu TINYINT, level TINYINT)
+
+drop table games;
+create table games (
+	player0,
+	player1,
+	movehistory text, 
+	moves int, 
+	startplayer tinyint,
+	finished tinyint default 0,
+	datum text default (dateTime()),
+	columns tinyint default 7,
+	rows tinyint default 6,
+	FOREIGN KEY (player0) REFERENCES player(oid), 
+	FOREIGN KEY (player1) REFERENCES player(oid) 
+);
+	
+
+
+insert into player (name) VALUES ('Horst');
+
+select (name) from player;
+
+select (player0, player1, 
+
+
+select name, name1, moves from
+	players, (select oid, name as name1 from players) as players1, games
+	where players.oid = games.player0 and players1.oid = games.player1
+	order by moves
+	
+select date(datum), time(datum), name, name1 from
+	players, (select oid, name as name1 from players) as players1, games
+	where players.oid=games.player0 and players1.oid=games.player1 
+		and finished=0 and movehistory not null
+	order by datum desc
+	
+insert into players (name, iscpu, level) values ('Horst', 1, 0)
+insert into players (name, iscpu, level) values ('Philipp', 1, 0)
+insert into players (name, iscpu, level) values ('Einstein', 1, 0)
+insert into players (name) values ('Jenny')
+
+insert into games (player0, player1, moves) values 
+	((select oid from players where name='Einstein'), (select oid from players where name='Horst'), 9);
+	
+insert into games (player0, player1, moves) values 
+	((select oid from players where name='Philipp'), (select oid from players where name='Horst'), 14);
+	
+insert into games (player0, player1, moves) values 
+	((select oid from players where name='Jenny'), (select oid from players where name='Horst'), 21);
+	
+insert into games (player0, player1, moves) values 
+	((select oid from players where name='Philipp'), (select oid from players where name='Jenny'), 17);
+	
+insert into games (player0, player1, moves) values 
+	((select oid from players where name='Jenny'), (select oid from players where name='Philipp'), 24);	
+	
+insert into games (player0, player1, moves) values 
+	((select oid from players where name='Einstein'), (select oid from players where name='Jenny'), 13);	

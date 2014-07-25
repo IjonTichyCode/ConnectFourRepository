@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SQLAdminFrame</class>
+ <widget class="QFrame" name="SQLAdminFrame">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>629</width>
+    <height>263</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Frame</string>
+  </property>
+  <property name="frameShape">
+   <enum>QFrame::StyledPanel</enum>
+  </property>
+  <property name="frameShadow">
+   <enum>QFrame::Sunken</enum>
+  </property>
+  <widget class="QLineEdit" name="queryLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>571</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="execQueryPushButton">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>50</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>exec query</string>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="queryReturnTextEdit">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>90</y>
+     <width>361</width>
+     <height>151</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="insertTimePushButton">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>80</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>insertTime</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>execQueryPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SQLAdminFrame</receiver>
+   <slot>execStatement()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>547</x>
+     <y>61</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>314</x>
+     <y>131</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>insertTimePushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SQLAdminFrame</receiver>
+   <slot>insertTimeIntoTimeTable()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>547</x>
+     <y>91</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>314</x>
+     <y>131</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>execStatement()</slot>
+  <slot>insertTimeIntoTimeTable()</slot>
+ </slots>
+</ui>
