@@ -1,0 +1,2 @@
+# ignore build artifacts in debug and release folder
+*.pro.user
