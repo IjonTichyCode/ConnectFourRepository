@@ -8,9 +8,13 @@ INPUT(
 ./release\QMLPlayScreen.o
 ./release\rowfield.o
 ./release\FiarArtificialPlayer.o
+./release\QMLHighscoreScreen.o
+./release\QMLLoadScreen.o
 ./release\qrc_qml.o
 ./release\moc_QMLBoard.o
 ./release\moc_QMLBoardTile.o
 ./release\moc_qmlmainwindow.o
 ./release\moc_QMLPlayScreen.o
+./release\moc_QMLHighscoreScreen.o
+./release\moc_QMLLoadScreen.o
 );

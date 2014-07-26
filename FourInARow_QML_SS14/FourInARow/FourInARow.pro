@@ -12,7 +12,9 @@ SOURCES += main.cpp \
     fourinarowgame.cpp \
     QMLPlayScreen.cpp \
     rowfield.cpp \
-    FiarArtificialPlayer.cpp
+    FiarArtificialPlayer.cpp \
+    QMLHighscoreScreen.cpp \
+    QMLLoadScreen.cpp
 
 RESOURCES += qml.qrc
 
@@ -30,4 +32,8 @@ HEADERS += \
     fourinarowgame.h \
     QMLPlayScreen.h \
     rowfield.h \
-    FiarArtificialPlayer.h
+    FiarArtificialPlayer.h \
+    QMLHighscoreScreen.h \
+    QMLLoadScreen.h
+
+OTHER_FILES +=

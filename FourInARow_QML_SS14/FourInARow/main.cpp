@@ -8,6 +8,8 @@
 #include "QMLBoard.h"
 #include "QMLBoardTile.h"
 #include "QMLPlayScreen.h"
+#include "QMLHighscoreScreen.h"
+#include "QMLLoadScreen.h"
 
 int main(int argc, char *argv[])
 {
@@ -17,6 +19,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<QMLBoard>("FourInARow", 1, 0, "QMLBoard");
     qmlRegisterType<QMLBoardTile>("FourInARow", 1, 0, "QMLBoardTile");
     qmlRegisterType<QMLPlayScreen>("FourInARow", 1, 0, "QMLPlayScreen");
+    qmlRegisterType<QMLHighscoreScreen>("FourInARow", 1, 0, "QMLHighscoreScreen");
+    qmlRegisterType<QMLLoadScreen>("FourInARow", 1, 0, "QMLLoadScreen");
 
     QQmlApplicationEngine engine;
 

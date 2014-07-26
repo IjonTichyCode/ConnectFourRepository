@@ -6,17 +6,81 @@ Rectangle {
     id: newGameScreen
     visible: true
 
-    color: Style.backgroundColor
-//    anchors.fill: parent
     width: parent.width
     height: parent.height
+
+    color: Style.backgroundColor
+
+    signal startClicked
+    signal cancelClicked
 
     Column {
         anchors.fill: parent
 
-        TextField {
+        Item {
+            id: optionsSpacer
+            height: Style.unit()
             width: parent.width
-            height: parent.height * .1
         }
+
+        Row {
+            width: parent.width
+            height: Style.unit()*8
+
+            Item {
+                width: parent.width * .08
+                height: parent.height
+            }
+
+            Column {
+                id: optionsBox
+                width: parent.width * .84
+                height: parent.height
+
+                PlayerSelection {
+                    playerId: "1"
+                }
+
+                PlayerSelection {
+                    playerId: "2"
+                }
+
+                Seperator {
+                    width: newGameScreen.width
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+            }
+        }
+
+        Row {
+            id: buttonBar
+            width: parent.width
+            height: Style.unit()
+
+            SimpleButton {
+                label: qsTr("start")
+                height: parent.height
+                width: parent.width/2
+                onClicked: newGameScreen.startClicked()
+            }
+
+            SimpleButton {
+                label: qsTr("cancel")
+                height: parent.height
+                width: parent.width/2
+                onClicked: newGameScreen.cancelClicked()
+            }
+        }
+
     }
+
+//    Column {
+//        anchors.fill: parent
+
+//        TextField {
+//            width: parent.width
+//            height: parent.height * .1
+//        }
+//    }
 }

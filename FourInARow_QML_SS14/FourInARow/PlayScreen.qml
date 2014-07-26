@@ -15,7 +15,6 @@ QMLPlayScreen {
     signal menuClicked
     signal cancelClicked
 
-
     Column {
         anchors.fill: parent
 
@@ -68,7 +67,7 @@ QMLPlayScreen {
             }
 
             SimpleButton {
-                id: canceButton
+                id: cancelButton
                 label: qsTr("cancel")
 
                 height: parent.height
@@ -79,8 +78,6 @@ QMLPlayScreen {
         }
 
     }
-
-
 
 
 

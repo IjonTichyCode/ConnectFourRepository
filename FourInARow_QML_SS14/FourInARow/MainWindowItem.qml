@@ -40,7 +40,15 @@ Item {
                 target: mainWindowItem
                 screenChoiceX: -3 * mainWindowItem.width
             }
+        },
+        State {
+            name: "LOADSCREEN"
+            PropertyChanges {
+                target: mainWindowItem
+                screenChoiceX: -4* mainWindowItem.width
+            }
         }
+
     ]
 
     state: "STARTSCREEN"
@@ -54,10 +62,10 @@ Item {
             id: startScreen
             visible: true
 
-            onNewGameClicked: mainWindowItem.state = "PLAYSCREEN"
+            onNewGameClicked: mainWindowItem.state = "NEWGAME"
             onHighscoreClicked: mainWindowItem.state = "HIGHSCORE"
             onContinueClicked: mainWindowItem.state = "PLAYSCREEN"
-            onLoadGameClicked: mainWindowItem.state = "PLAYSCREEN"
+            onLoadGameClicked: mainWindowItem.state = "LOADSCREEN"
         }
 
         PlayScreen {
@@ -76,6 +84,13 @@ Item {
 
         HighscoreScreen {
             id: highscoreScreen
+            visible: true
+
+            onBackClicked: mainWindowItem.state = "STARTSCREEN"
+        }
+
+        LoadScreen {
+            id: loadScreen
             visible: true
 
             onBackClicked: mainWindowItem.state = "STARTSCREEN"

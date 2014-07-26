@@ -25,8 +25,9 @@ QMLMainWindow {
         Style.h1 = function() { return Style.unit()*.75 }
         Style.h2 = function() { return Style.unit()*.7 }
         Style.h3 = function() { return Style.unit()*.65 }
-        Style.h4 = function() { return Style.unit()*55}
-        Style.p = function() { return Style.unit()*.5 }
+        Style.h4 = function() { return Style.unit()* .55}
+        Style.p = function() { return Style.unit()*.4 }
+        Style.tinyText = function() { return Style.unit()*.25 }
         Style.lineWidth = function() { return Math.ceil(Style.unit() * 0.02) }
 
         var mainWindowItemComponent = Qt.createComponent("MainWindowItem.qml");

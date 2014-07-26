@@ -5,6 +5,7 @@ import "style.js" as Style
 Item {
     id: simpleButton
     property string label: "button"
+    property real fontSize: Style.h3()
 
     signal clicked
 
@@ -25,7 +26,7 @@ Item {
         text: label
         anchors.centerIn: parent
 //        font.pixelSize: 3*parent.height < parent.width ? parent.height* .45 : .15 * parent.width
-        font.pixelSize: Style.h3()
+        font.pixelSize: fontSize
         horizontalAlignment: Text.AlignHCenter
     }
 

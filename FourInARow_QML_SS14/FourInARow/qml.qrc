@@ -8,7 +8,6 @@
         <file>MainWindow.qml</file>
         <file>Title.qml</file>
         <file>Options.qml</file>
-        <file>NewGameScreen.qml</file>
         <file>DragArrow.qml</file>
         <file>style.js</file>
         <file>OptionsSwitch.qml</file>
@@ -29,5 +28,8 @@
         <file>resources/antialias.png</file>
         <file>HighscoreScreen.qml</file>
         <file>CloseButton.qml</file>
+        <file>LoadScreen.qml</file>
+        <file>NewGameScreen.qml</file>
+        <file>PlayerSelection.qml</file>
     </qresource>
 </RCC>
