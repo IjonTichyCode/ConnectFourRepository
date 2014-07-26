@@ -80,6 +80,9 @@ Item {
         NewGameScreen {
             id: newGameScreen
             visible: true
+
+            onCancelClicked: mainWindowItem.state = "STARTSCREEN"
+            onStartClicked: mainWindowItem.state = "PLAYSCREEN"
         }
 
         HighscoreScreen {

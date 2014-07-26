@@ -152,6 +152,7 @@ QMLHighscoreScreen {
                     anchors.fill: parent
                     model: highscoreModel
                     delegate: highscoreEntryDelegate
+                    boundsBehavior: Flickable.StopAtBounds
                 }
             }
 

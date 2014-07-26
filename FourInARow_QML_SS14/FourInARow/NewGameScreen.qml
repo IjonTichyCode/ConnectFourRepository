@@ -14,6 +14,8 @@ Rectangle {
     signal startClicked
     signal cancelClicked
 
+    property int testCounter: 0
+
     Column {
         anchors.fill: parent
 
@@ -39,10 +41,12 @@ Rectangle {
 
                 PlayerSelection {
                     playerId: "1"
+                    z:2
                 }
 
                 PlayerSelection {
                     playerId: "2"
+                    z:1
                 }
 
                 Seperator {

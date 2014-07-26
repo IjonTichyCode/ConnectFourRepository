@@ -112,6 +112,7 @@ QMLLoadScreen {
                     anchors.fill: parent
                     model: loadGameModel
                     delegate: loadEntryDelegate
+                    boundsBehavior: Flickable.StopAtBounds
                 }
             }
 

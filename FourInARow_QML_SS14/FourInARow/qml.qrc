@@ -31,5 +31,6 @@
         <file>LoadScreen.qml</file>
         <file>NewGameScreen.qml</file>
         <file>PlayerSelection.qml</file>
+        <file>PlayerList.qml</file>
     </qresource>
 </RCC>
