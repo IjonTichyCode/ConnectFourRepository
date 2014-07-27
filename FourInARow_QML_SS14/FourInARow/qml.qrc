@@ -32,5 +32,9 @@
         <file>NewGameScreen.qml</file>
         <file>PlayerSelection.qml</file>
         <file>PlayerList.qml</file>
+        <file>BoardSizeControl.qml</file>
+        <file>resources/hook.svg</file>
+        <file>resources/clock.svg</file>
+        <file>ColorSelection.qml</file>
     </qresource>
 </RCC>

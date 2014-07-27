@@ -114,6 +114,14 @@ Item {
         }
 
         onOptFullscreenChanged: parentWindow.setFullscreen(optFullscreen)
+        onOptColor0Changed: {
+            console.log("MainWindowItem: onOptColor0Changed")
+            playScreen.color0 = optColor0
+        }
+        onOptColor1Changed: {
+            console.log("MainWindowItem: onOptColor1Changed")
+            playScreen.color1 = optColor1
+        }
 
     }
 

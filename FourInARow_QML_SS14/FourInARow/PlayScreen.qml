@@ -13,7 +13,8 @@ QMLPlayScreen {
 
     signal saveClicked
     signal menuClicked
-    signal cancelClicked
+    signal cancelClicked   
+
 
     Column {
         anchors.fill: parent
@@ -79,8 +80,6 @@ QMLPlayScreen {
 
     }
 
-
-
     property Token token
     property int design: 0
     property string newTokenCode:
@@ -97,9 +96,9 @@ QMLPlayScreen {
         }
     "
 
-    property variant playerColors: ["red", "yellow"]
-
-
+    property variant playerColors: [color0, color1]
+    property color color0
+    property color color1
 
     onDropToken: {
         token.drop(column, row, Math.sqrt(board.dimension.y-row+.5)*800.0)
@@ -107,7 +106,11 @@ QMLPlayScreen {
 
     onSetupToken: {
         var t = Qt.createQmlObject(newTokenCode, board, "/")
-        t.color = playerColors[player]
+        t.color =   Qt.binding(
+                        function() {
+                            return playerColors[player];
+                        }
+                    )
         t.column = column
         t.row = row
     }
@@ -116,7 +119,11 @@ QMLPlayScreen {
         token = Qt.createQmlObject(newTokenCode, board, "/")
         token.row = board.dimension.y + .5
         token.column = Math.round(board.dimension.x /2)-1
-        token.color = playerColors[player]
+        token.color =   Qt.binding(
+                            function() {
+                                return playerColors[player];
+                            }
+                        )
         token.bounce = bounceEffects[player]
         token.slide = slideEffects[player]
     }

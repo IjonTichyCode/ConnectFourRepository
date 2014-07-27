@@ -8,6 +8,9 @@ Item {
     height: Style.unit() * 1.5
 
     property string playerId
+//    property real zOffset: 0
+    property PlayerList playerList
+    property string player: "Arthur"
 
     Column {
         anchors.fill: parent
@@ -32,7 +35,7 @@ Item {
                 id: playerDropdownButton
                 height: parent.height
                 width: parent.width * .68
-                property string label: "Arthur"
+                property string label: player
 
                 onClicked: playerList.visible = true
 
@@ -54,7 +57,7 @@ Item {
                                 duration: 70
                             }
                         }
-                        color: control.pressed ? Style.buttonPressedColor : Style.backgroundColor
+                        color: control.pressed ? Style.buttonPressedColor : Style.buttonColor
 
                         Row {
                             anchors.fill: parent
@@ -69,38 +72,17 @@ Item {
                                 verticalAlignment: Text.AlignVCenter
                             }
 
-                            Item {
-                                height: parent.height/2
+                            DragArrow {
                                 width: parent.height
-                                clip: true
-                                y: height * 2/3
-
-                                Rectangle {
-                                    id: arrow
-                                    anchors.horizontalCenter: parent.horizontalCenter
-                                    width: parent.width /2
-                                    height: parent.width /2
-                                    y: -height/2
-
-                                    color: "transparent"
-                                    border.color: Style.buttonBorderColor
-                                    border.width: Style.lineWidth()
-
-                                    transform: Rotation {
-                                        angle: 45
-                                        origin.x: arrow.width/2
-                                        origin.y: arrow.height/2
-                                    }
-
-                                }
+                                height: parent.height
+                                lineWidth: Style.lineWidth()
+                                color: Style.buttonBorderColor
+                                direction: -1
                             }
                         }
 
 
                     }
-
-
-
                 }
             }
 
@@ -126,18 +108,7 @@ Item {
         }
     }
 
-    PlayerList{
-        id: playerList
-        width: parent.width * 1.05
-        height: Style.unit()*6
-        visible: false
 
-        onPlayerClicked: {
-            visible = false
-            playerDropdownButton.label = player
-        }
-
-    }
 
 }
 
