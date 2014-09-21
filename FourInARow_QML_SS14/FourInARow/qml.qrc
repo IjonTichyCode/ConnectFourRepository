@@ -11,17 +11,13 @@
         <file>DragArrow.qml</file>
         <file>style.js</file>
         <file>OptionsSwitch.qml</file>
-        <file>resources/blackToken.png</file>
         <file>resources/fullscreen.svg</file>
-        <file>resources/boardTile.svg</file>
         <file>Token.qml</file>
-        <file>resources/token.svg</file>
         <file>AspectRatioItem.qml</file>
         <file>resources/bounce0.wav</file>
         <file>resources/bounce1.wav</file>
         <file>resources/slide0.wav</file>
         <file>resources/slide1.wav</file>
-        <file>resources/token.png</file>
         <file>Seperator.qml</file>
         <file>DesignSelector.qml</file>
         <file>MainWindowItem.qml</file>
@@ -36,5 +32,22 @@
         <file>resources/hook.svg</file>
         <file>resources/clock.svg</file>
         <file>ColorSelection.qml</file>
+        <file>resources/boardTile0.png</file>
+        <file>resources/boardTile1.svg</file>
+        <file>resources/token0.png</file>
+        <file>resources/token1.svg</file>
+        <file>resources/token2.svg</file>
+        <file>resources/tokenTie.svg</file>
+        <file>resources/tokenWin.svg</file>
+        <file>resources/boardTile2.svg</file>
+        <file>TimerSelection.qml</file>
+        <file>StepButton.qml</file>
+        <file>SQLScreen.qml</file>
+        <file>NewPlayerDialog.qml</file>
+        <file>resources/invalidMove.wav</file>
+        <file>resources/tie.wav</file>
+        <file>resources/win.wav</file>
+        <file>resources/de.svg</file>
+        <file>resources/uk.svg</file>
     </qresource>
 </RCC>

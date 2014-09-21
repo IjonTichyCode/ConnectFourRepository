@@ -24,31 +24,17 @@ Item {
         verticalAlignment: Text.AlignVCenter
     }
 
-    Button{
+    StepButton {
         width: parent.height
         height: parent.height*.8
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: decButton.left
 
         onClicked: value = value<maxValue ? value+1 : maxValue
-
-        style: ButtonStyle{
-            background: Rectangle {
-                anchors.fill: parent
-                color: control.pressed ? Style.buttonPressedColor : Style.buttonColor
-                border.color: Style.buttonBorderColor
-                border.width: Style.lineWidth()
-
-                DragArrow {
-                    anchors.fill: parent
-                    direction: 1
-                    lineWidth: Style.lineWidth()
-                }
-            }
-        }
+        direction: 1
     }
 
-    Button{
+    StepButton {
         id: decButton
         width: parent.height
         height: parent.height*.8
@@ -56,21 +42,7 @@ Item {
         anchors.right: parent.right
 
         onClicked: value = value>minValue ? value-1 : minValue
-
-        style: ButtonStyle{
-            background: Rectangle {
-                anchors.fill: parent
-                color: control.pressed ? Style.buttonPressedColor : Style.buttonColor
-                border.color: Style.buttonBorderColor
-                border.width: Style.lineWidth()
-
-                DragArrow {
-                    anchors.fill: parent
-                    direction: -1
-                    lineWidth: Style.lineWidth()
-                }
-            }
-        }
+        direction: -1
     }
 
 }

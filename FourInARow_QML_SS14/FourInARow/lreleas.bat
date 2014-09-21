@@ -1,0 +1,1 @@
+lrelease.exe FourInARow.pro

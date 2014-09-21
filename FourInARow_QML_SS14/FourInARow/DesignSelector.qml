@@ -9,6 +9,13 @@ Item {
     property int design: 1
     property color color: "#B300FF"
 
+    function setDesign(design) {
+        button0.checked = (design==0 ? true : false)
+        button1.checked = (design==1 ? true : false)
+        button2.checked = (design==2 ? true : false)
+        designSelector.design = design
+    }
+
     Text {
         anchors {
             left: parent.left

@@ -3,6 +3,9 @@
 
 #include <QQuickItem>
 
+/**
+ * @brief The QMLBoard class is obsolete
+ */
 class QMLBoard : public QQuickItem
 {
     Q_OBJECT

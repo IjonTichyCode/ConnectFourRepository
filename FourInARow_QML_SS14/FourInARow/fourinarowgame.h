@@ -3,7 +3,6 @@
 
 #include "fourinarowboard.h"
 
-
 enum MoveResult {
     SUCCESS,
     WIN,
@@ -46,6 +45,8 @@ public:
      * Only the return code SUCCESS changes the player to move next.
      */
     MoveResult move(int column);
+
+    void removeToken(int column);
 
     /**
      * @brief getColumnCount

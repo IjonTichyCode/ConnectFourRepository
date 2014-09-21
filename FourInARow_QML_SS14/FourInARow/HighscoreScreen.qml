@@ -56,6 +56,7 @@ QMLHighscoreScreen {
 
     onAddEntry: highscoreModel.append({ "player": player, "wins": wins, "losses": losses, "ratio": ratio })
     onClear: highscoreModel.clear()
+    Component.onCompleted: populate()
 
     property int testCounter: 0
 

@@ -14,8 +14,24 @@ QMLLoadScreen {
 
     signal backClicked
 
+    onAddEntry: loadGameModel.append({ "player0": player0, "player1": player1, "index": index })
+    onClear: loadGameModel.clear()
+    Component.onCompleted: populate()
+
+//    property int testCounter: 0
+
+    onBackClicked: {
+//        if (testCounter>10) {
+//            testCounter=0
+//            clear()
+//        }else{
+//            addEntry("Silke", "Paula", testCounter)
+//            testCounter += 1
+//        }
+    }
+
     /*
-      Defines a ListElement of the Highscore ListView
+      Defines a ListElement of the LoadScreen ListView
     */
     Component {
         id: loadEntryDelegate
@@ -66,21 +82,6 @@ QMLLoadScreen {
                 height: Style.lineWidth()
                 y: Style.unit()
             }
-        }
-    }
-
-    onAddEntry: loadGameModel.append({ "player0": player0, "player1": player1, "index": index })
-    onClear: loadGameModel.clear()
-
-    property int testCounter: 0
-
-    onBackClicked: {
-        if (testCounter>10) {
-            testCounter=0
-            clear()
-        }else{
-            addEntry("Silke", "Paula", testCounter)
-            testCounter += 1
         }
     }
 

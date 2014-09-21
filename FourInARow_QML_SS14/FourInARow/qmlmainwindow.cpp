@@ -1,5 +1,7 @@
 #include <QDebug>
 #include "qmlmainwindow.h"
+#include "GameDataModel.h"
+#include "FIARApplicationSetup.h"
 
 
 QMLMainWindow::QMLMainWindow(QWindow *parent) :
@@ -13,6 +15,10 @@ QMLMainWindow::QMLMainWindow(QWindow *parent) :
     // old syntax needed, because of bug:
     // https://bugreports.qt-project.org/browse/QTBUG-36453?page=com.atlassian.jira.plugin.system.issuetabpanels:all-tabpanel
     connect(this, SIGNAL(closing(QQuickCloseEvent*)), this, SLOT(closeEvent(QQuickCloseEvent *)));
+
+    FIARApplicationSetup & appSetup = GameDataModel::getInstance()->getAppSetup();
+    setWidth(appSetup.width > 150 ? appSetup.width : 360);
+    setHeight(appSetup.height > 150 ? appSetup.height : 600);
 }
 
 void QMLMainWindow::setAntialiasing(bool state)
@@ -32,8 +38,18 @@ void QMLMainWindow::setFullscreen(bool state)
     }
 }
 
+void QMLMainWindow::resizeEvent(QResizeEvent *resizeEvent)
+{
+    FIARApplicationSetup & appSetup = GameDataModel::getInstance()->getAppSetup();
+    appSetup.width = resizeEvent->size().width();
+    appSetup.height = resizeEvent->size().height();
+    QQuickWindow::resizeEvent(resizeEvent);
+}
+
 void QMLMainWindow::close()
 {
+    closing();
+    GameDataModel::getInstance()->saveAppSetup();
     qDebug() << "close";
     QQuickWindow::close();
 }

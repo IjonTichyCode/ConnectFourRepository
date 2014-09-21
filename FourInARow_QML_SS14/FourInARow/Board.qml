@@ -6,6 +6,7 @@ QMLBoard {
 
     dimension: Qt.vector2d(7,6)
     property real aspectRatio: dimension.x/(dimension.y + 2);
+    property int design: 0
     width: parent.width/parent.height > aspectRatio ? parent.height * aspectRatio : parent.width;
     height: parent.width/parent.height < aspectRatio ? parent.width/ aspectRatio : parent.height;
 
@@ -15,17 +16,6 @@ QMLBoard {
     }
 
     tileWidth: width/dimension.x;
-
-//    Rectangle {
-//        anchors.fill: parent
-//        color: "transparent"
-//    }
-
-
-//    Token {
-//        edgeLength: board.tileWidth;
-//    }
-
 
     Grid {
         id: boardGrid
@@ -40,6 +30,7 @@ QMLBoard {
             model: boardGrid.columns * boardGrid.rows
             BoardTile {
                 edgeLength: boardGrid.width/boardGrid.columns
+                design: board.design
             }
         }
     }

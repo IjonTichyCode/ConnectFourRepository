@@ -11,13 +11,13 @@ MAKEFILE      = Makefile.Release
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DUNICODE -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
+DEFINES       = -DUNICODE -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_QML_LIB -DQT_SQL_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
 CFLAGS        = -pipe -fno-keep-inline-dllexport -O2 -Wall -Wextra $(DEFINES)
 CXXFLAGS      = -pipe -fno-keep-inline-dllexport -O2 -std=c++0x -frtti -Wall -Wextra -fexceptions -mthreads $(DEFINES)
-INCPATH       = -I..\FourInARow -I"D:\Qt\Qt5.3.0\5.3\mingw482_32\include" -I"D:\Qt\Qt5.3.0\5.3\mingw482_32\include\QtQuick" -I"D:\Qt\Qt5.3.0\5.3\mingw482_32\include\QtQml" -I"D:\Qt\Qt5.3.0\5.3\mingw482_32\include\QtNetwork" -I"D:\Qt\Qt5.3.0\5.3\mingw482_32\include\QtGui" -I"D:\Qt\Qt5.3.0\5.3\mingw482_32\include\QtCore" -I"release" -I"." -I"D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\win32-g++"
+INCPATH       = -I..\FourInARow -I"D:\Qt\Qt5.3.0\5.3\mingw482_32\include" -I"D:\Qt\Qt5.3.0\5.3\mingw482_32\include\QtQuick" -I"D:\Qt\Qt5.3.0\5.3\mingw482_32\include\QtQml" -I"D:\Qt\Qt5.3.0\5.3\mingw482_32\include\QtSql" -I"D:\Qt\Qt5.3.0\5.3\mingw482_32\include\QtNetwork" -I"D:\Qt\Qt5.3.0\5.3\mingw482_32\include\QtGui" -I"D:\Qt\Qt5.3.0\5.3\mingw482_32\include\QtCore" -I"release" -I"." -I"D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\win32-g++"
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
-LIBS        =        -lglu32 -lopengl32 -lgdi32 -luser32 -lmingw32 -lqtmain -LD:/Qt/Qt5.3.0/5.3/mingw482_32/lib -lQt5Quick -lQt5Qml -lQt5Network -lQt5Gui -lQt5Core 
+LIBS        =        -lglu32 -lopengl32 -lgdi32 -luser32 -lmingw32 -lqtmain -LD:/Qt/Qt5.3.0/5.3/mingw482_32/lib -lQt5Quick -lQt5Qml -lQt5Sql -lQt5Network -lQt5Gui -lQt5Core 
 QMAKE         = D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\qmake.exe
 IDC           = idc
 IDL           = midl
@@ -53,13 +53,29 @@ SOURCES       = ..\FourInARow\main.cpp \
 		..\FourInARow\rowfield.cpp \
 		..\FourInARow\FiarArtificialPlayer.cpp \
 		..\FourInARow\QMLHighscoreScreen.cpp \
-		..\FourInARow\QMLLoadScreen.cpp release\qrc_qml.cpp \
+		..\FourInARow\QMLLoadScreen.cpp \
+		..\FourInARow\GameDatabase.cpp \
+		..\FourInARow\GameSetup.cpp \
+		..\FourInARow\QMLSQLScreen.cpp \
+		..\FourInARow\fourinarowapplication.cpp \
+		..\FourInARow\GameDataModel.cpp \
+		..\FourInARow\playerdata.cpp \
+		..\FourInARow\QMLNewGameScreen.cpp \
+		..\FourInARow\FIARNetworkGame.cpp \
+		..\FourInARow\FIARApplicationSetup.cpp \
+		..\FourInARow\FiarGameListener.cpp \
+		..\FourInARow\FiarGameListenerForQMLGui.cpp \
+		..\FourInARow\QMLOptions.cpp release\qrc_qml.cpp \
 		release\moc_QMLBoard.cpp \
 		release\moc_QMLBoardTile.cpp \
 		release\moc_qmlmainwindow.cpp \
 		release\moc_QMLPlayScreen.cpp \
 		release\moc_QMLHighscoreScreen.cpp \
-		release\moc_QMLLoadScreen.cpp
+		release\moc_QMLLoadScreen.cpp \
+		release\moc_GameDatabase.cpp \
+		release\moc_QMLSQLScreen.cpp \
+		release\moc_QMLNewGameScreen.cpp \
+		release\moc_QMLOptions.cpp
 OBJECTS       = release/main.o \
 		release/QMLBoard.o \
 		release/QMLBoardTile.o \
@@ -71,13 +87,29 @@ OBJECTS       = release/main.o \
 		release/FiarArtificialPlayer.o \
 		release/QMLHighscoreScreen.o \
 		release/QMLLoadScreen.o \
+		release/GameDatabase.o \
+		release/GameSetup.o \
+		release/QMLSQLScreen.o \
+		release/fourinarowapplication.o \
+		release/GameDataModel.o \
+		release/playerdata.o \
+		release/QMLNewGameScreen.o \
+		release/FIARNetworkGame.o \
+		release/FIARApplicationSetup.o \
+		release/FiarGameListener.o \
+		release/FiarGameListenerForQMLGui.o \
+		release/QMLOptions.o \
 		release/qrc_qml.o \
 		release/moc_QMLBoard.o \
 		release/moc_QMLBoardTile.o \
 		release/moc_qmlmainwindow.o \
 		release/moc_QMLPlayScreen.o \
 		release/moc_QMLHighscoreScreen.o \
-		release/moc_QMLLoadScreen.o
+		release/moc_QMLLoadScreen.o \
+		release/moc_GameDatabase.o \
+		release/moc_QMLSQLScreen.o \
+		release/moc_QMLNewGameScreen.o \
+		release/moc_QMLOptions.o
 
 DIST          = 
 QMAKE_TARGET  = FourInARow
@@ -115,10 +147,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) FourInARow.zip $(SOURCES) $(DIST) ..\FourInARow\FourInARow.pro D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\spec_pre.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\qdevice.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\device_config.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\common\shell-win32.conf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\qconfig.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_axbase.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_axbase_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_axcontainer.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_axserver.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_axserver_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_bluetooth.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_clucene_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_concurrent.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_core.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_core_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_declarative.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_declarative_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_designer.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_designer_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_enginio.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_enginio_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_gui.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_gui_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_help.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_help_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_multimedia.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_network.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_network_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_nfc.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_nfc_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_opengl.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_opengl_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_openglextensions.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_platformsupport_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_positioning.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_positioning_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_printsupport.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_qml.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_qml_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_qmltest.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_quick.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_quick_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_script.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_script_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_scripttools.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_scripttools_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_sensors.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_sensors_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_serialport.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_serialport_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_sql.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_sql_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_svg.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_svg_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_testlib.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_testlib_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_uitools.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_uitools_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_webkit.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_webkit_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_webkitwidgets.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_webkitwidgets_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_websockets.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_websockets_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_widgets.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_widgets_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_winextras.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_winextras_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_xml.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_xml_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\qt_functions.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\qt_config.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\win32\qt_config.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\win32-g++\qmake.conf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\spec_post.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\exclusive_builds.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\default_pre.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\win32\default_pre.prf ..\FourInARow\deployment.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\resolve_config.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\exclusive_builds_post.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\default_post.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\build_pass.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\c++11.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\qml_debug.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\declarative_debug.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\win32\rtti.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\precompile_header.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\warn_on.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\qt.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\resources.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\moc.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\win32\opengl.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\win32\windows.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\testcase_targets.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\exceptions.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\yacc.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\lex.prf ..\FourInARow\FourInARow.pro ..\FourInARow\qml.qrc D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Quick.prl D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Qml.prl D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Network.prl D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Gui.prl D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Core.prl  NO_PCH_SOURCES RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES YACCSOURCES YACCSOURCES LEXSOURCES 
+	$(ZIP) FourInARow.zip $(SOURCES) $(DIST) ..\FourInARow\FourInARow.pro D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\spec_pre.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\qdevice.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\device_config.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\common\shell-win32.conf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\qconfig.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_axbase.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_axbase_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_axcontainer.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_axserver.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_axserver_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_bluetooth.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_clucene_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_concurrent.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_core.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_core_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_declarative.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_declarative_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_designer.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_designer_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_enginio.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_enginio_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_gui.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_gui_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_help.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_help_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_multimedia.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_network.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_network_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_nfc.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_nfc_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_opengl.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_opengl_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_openglextensions.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_platformsupport_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_positioning.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_positioning_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_printsupport.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_qml.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_qml_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_qmltest.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_quick.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_quick_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_script.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_script_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_scripttools.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_scripttools_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_sensors.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_sensors_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_serialport.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_serialport_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_sql.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_sql_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_svg.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_svg_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_testlib.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_testlib_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_uitools.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_uitools_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_webkit.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_webkit_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_webkitwidgets.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_webkitwidgets_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_websockets.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_websockets_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_widgets.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_widgets_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_winextras.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_winextras_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_xml.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_xml_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\qt_functions.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\qt_config.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\win32\qt_config.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\win32-g++\qmake.conf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\spec_post.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\exclusive_builds.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\default_pre.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\win32\default_pre.prf ..\FourInARow\deployment.pri D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\resolve_config.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\exclusive_builds_post.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\default_post.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\build_pass.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\c++11.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\qml_debug.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\declarative_debug.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\win32\rtti.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\precompile_header.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\warn_on.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\qt.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\resources.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\moc.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\win32\opengl.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\win32\windows.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\testcase_targets.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\exceptions.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\yacc.prf D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\lex.prf ..\FourInARow\FourInARow.pro ..\FourInARow\qml.qrc D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Quick.prl D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Qml.prl D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Sql.prl D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Network.prl D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Gui.prl D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Core.prl tr_de.ts tr_en.ts tr_de.ts tr_en.ts NO_PCH_SOURCES RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES YACCSOURCES YACCSOURCES LEXSOURCES 
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\main.o release\QMLBoard.o release\QMLBoardTile.o release\qmlmainwindow.o release\fourinarowboard.o release\fourinarowgame.o release\QMLPlayScreen.o release\rowfield.o release\FiarArtificialPlayer.o release\QMLHighscoreScreen.o release\QMLLoadScreen.o release\qrc_qml.o release\moc_QMLBoard.o release\moc_QMLBoardTile.o release\moc_qmlmainwindow.o release\moc_QMLPlayScreen.o release\moc_QMLHighscoreScreen.o release\moc_QMLLoadScreen.o
+	-$(DEL_FILE) release\main.o release\QMLBoard.o release\QMLBoardTile.o release\qmlmainwindow.o release\fourinarowboard.o release\fourinarowgame.o release\QMLPlayScreen.o release\rowfield.o release\FiarArtificialPlayer.o release\QMLHighscoreScreen.o release\QMLLoadScreen.o release\GameDatabase.o release\GameSetup.o release\QMLSQLScreen.o release\fourinarowapplication.o release\GameDataModel.o release\playerdata.o release\QMLNewGameScreen.o release\FIARNetworkGame.o release\FIARApplicationSetup.o release\FiarGameListener.o release\FiarGameListenerForQMLGui.o release\QMLOptions.o release\qrc_qml.o release\moc_QMLBoard.o release\moc_QMLBoardTile.o release\moc_qmlmainwindow.o release\moc_QMLPlayScreen.o release\moc_QMLHighscoreScreen.o release\moc_QMLLoadScreen.o release\moc_GameDatabase.o release\moc_QMLSQLScreen.o release\moc_QMLNewGameScreen.o release\moc_QMLOptions.o
 
 distclean: clean 
 	-$(DEL_FILE) $(DESTDIR_TARGET)
@@ -136,40 +168,60 @@ compiler_rcc_make_all: release/qrc_qml.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_qml.cpp
 release/qrc_qml.cpp: ../FourInARow/qml.qrc \
-		../FourInARow/DesignSelector.qml \
-		../FourInARow/StartScreen.qml \
-		../FourInARow/BoardTile.qml \
-		../FourInARow/MainWindowItem.qml \
-		../FourInARow/DragArrow.qml \
-		../FourInARow/Token.qml \
-		../FourInARow/MainWindow.qml \
-		../FourInARow/HighscoreScreen.qml \
-		../FourInARow/Board.qml \
-		../FourInARow/Seperator.qml \
 		../FourInARow/LoadScreen.qml \
-		../FourInARow/AspectRatioItem.qml \
 		../FourInARow/Options.qml \
+		../FourInARow/HighscoreScreen.qml \
+		../FourInARow/MainWindow.qml \
+		../FourInARow/AspectRatioItem.qml \
+		../FourInARow/ColorSelection.qml \
+		../FourInARow/Board.qml \
+		../FourInARow/StepButton.qml \
+		../FourInARow/Token.qml \
+		../FourInARow/PlayerSelection.qml \
+		../FourInARow/TimerSelection.qml \
 		../FourInARow/CloseButton.qml \
-		../FourInARow/Title.qml \
-		../FourInARow/SimpleButton.qml \
 		../FourInARow/PlayScreen.qml \
-		../FourInARow/OptionsSwitch.qml \
+		../FourInARow/PlayerList.qml \
+		../FourInARow/BoardTile.qml \
 		../FourInARow/style.js \
-		../FourInARow/resources/boardTile.svg \
-		../FourInARow/resources/blackToken.png \
-		../FourInARow/resources/slide1.wav \
-		../FourInARow/resources/token.png \
-		../FourInARow/resources/antialias.png \
-		../FourInARow/resources/token.svg \
-		../FourInARow/resources/bounce1.wav \
+		../FourInARow/SQLScreen.qml \
+		../FourInARow/DragArrow.qml \
+		../FourInARow/Title.qml \
+		../FourInARow/NewPlayerDialog.qml \
+		../FourInARow/NewGameScreen.qml \
+		../FourInARow/DesignSelector.qml \
+		../FourInARow/Seperator.qml \
+		../FourInARow/SimpleButton.qml \
+		../FourInARow/MainWindowItem.qml \
+		../FourInARow/OptionsSwitch.qml \
+		../FourInARow/StartScreen.qml \
+		../FourInARow/BoardSizeControl.qml \
 		../FourInARow/resources/slide0.wav \
+		../FourInARow/resources/slide1.wav \
+		../FourInARow/resources/token1.svg \
+		../FourInARow/resources/bounce0.wav \
+		../FourInARow/resources/bounce1.wav \
+		../FourInARow/resources/token2.svg \
+		../FourInARow/resources/boardTile0.png \
+		../FourInARow/resources/win.wav \
+		../FourInARow/resources/tie.wav \
+		../FourInARow/resources/de.svg \
+		../FourInARow/resources/token0.png \
+		../FourInARow/resources/tokenTie.svg \
+		../FourInARow/resources/invalidMove.wav \
+		../FourInARow/resources/clock.svg \
+		../FourInARow/resources/tokenWin.svg \
 		../FourInARow/resources/fullscreen.svg \
-		../FourInARow/resources/bounce0.wav
+		../FourInARow/resources/uk.svg \
+		../FourInARow/resources/hook.svg \
+		../FourInARow/resources/boardTile1.svg \
+		../FourInARow/resources/antialias.png \
+		../FourInARow/resources/boardTile2.svg
 	D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\rcc.exe -name qml ..\FourInARow\qml.qrc -o release\qrc_qml.cpp
 
-compiler_moc_header_make_all: release/moc_QMLBoard.cpp release/moc_QMLBoardTile.cpp release/moc_qmlmainwindow.cpp release/moc_QMLPlayScreen.cpp release/moc_QMLHighscoreScreen.cpp release/moc_QMLLoadScreen.cpp
+compiler_moc_header_make_all: release/moc_QMLBoard.cpp release/moc_QMLBoardTile.cpp release/moc_qmlmainwindow.cpp release/moc_QMLPlayScreen.cpp release/moc_QMLHighscoreScreen.cpp release/moc_QMLLoadScreen.cpp release/moc_GameDatabase.cpp release/moc_QMLSQLScreen.cpp release/moc_QMLNewGameScreen.cpp release/moc_QMLOptions.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) release\moc_QMLBoard.cpp release\moc_QMLBoardTile.cpp release\moc_qmlmainwindow.cpp release\moc_QMLPlayScreen.cpp release\moc_QMLHighscoreScreen.cpp release\moc_QMLLoadScreen.cpp
+	-$(DEL_FILE) release\moc_QMLBoard.cpp release\moc_QMLBoardTile.cpp release\moc_qmlmainwindow.cpp release\moc_QMLPlayScreen.cpp release\moc_QMLHighscoreScreen.cpp release\moc_QMLLoadScreen.cpp release\moc_GameDatabase.cpp release\moc_QMLSQLScreen.cpp release\moc_QMLNewGameScreen.cpp release\moc_QMLOptions.cpp
 release/moc_QMLBoard.cpp: D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickItem \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickitem.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qtquickglobal.h \
@@ -273,7 +325,7 @@ release/moc_QMLBoard.cpp: D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickIt
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qcolor.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qrgb.h \
 		../FourInARow/QMLBoard.h
-	D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/Emanuel_Kern/C++/QT/ConnectFourRepository/FourInARow_QML_SS14/FourInARow -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore -I. ..\FourInARow\QMLBoard.h -o release\moc_QMLBoard.cpp
+	D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/Emanuel_Kern/C++/QT/ConnectFourRepository/FourInARow_QML_SS14/FourInARow -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore -I. ..\FourInARow\QMLBoard.h -o release\moc_QMLBoard.cpp
 
 release/moc_QMLBoardTile.cpp: D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickItem \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickitem.h \
@@ -381,7 +433,7 @@ release/moc_QMLBoardTile.cpp: D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQui
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickpainteditem.h \
 		../FourInARow/QMLBoard.h \
 		../FourInARow/QMLBoardTile.h
-	D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/Emanuel_Kern/C++/QT/ConnectFourRepository/FourInARow_QML_SS14/FourInARow -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore -I. ..\FourInARow\QMLBoardTile.h -o release\moc_QMLBoardTile.cpp
+	D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/Emanuel_Kern/C++/QT/ConnectFourRepository/FourInARow_QML_SS14/FourInARow -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore -I. ..\FourInARow\QMLBoardTile.h -o release\moc_QMLBoardTile.cpp
 
 release/moc_qmlmainwindow.cpp: D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickWindow \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickwindow.h \
@@ -491,7 +543,7 @@ release/moc_qmlmainwindow.cpp: D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQu
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvector2d.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qtouchdevice.h \
 		../FourInARow/qmlmainwindow.h
-	D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/Emanuel_Kern/C++/QT/ConnectFourRepository/FourInARow_QML_SS14/FourInARow -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore -I. ..\FourInARow\qmlmainwindow.h -o release\moc_qmlmainwindow.cpp
+	D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/Emanuel_Kern/C++/QT/ConnectFourRepository/FourInARow_QML_SS14/FourInARow -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore -I. ..\FourInARow\qmlmainwindow.h -o release\moc_qmlmainwindow.cpp
 
 release/moc_QMLPlayScreen.cpp: D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickItem \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickitem.h \
@@ -595,11 +647,14 @@ release/moc_QMLPlayScreen.cpp: D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQu
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qeventloop.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qcolor.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qrgb.h \
+		../FourInARow/FIARNetworkGame.h \
 		../FourInARow/fourinarowgame.h \
 		../FourInARow/fourinarowboard.h \
 		../FourInARow/rowfield.h \
+		../FourInARow/FiarArtificialPlayer.h \
+		../FourInARow/FiarGameListener.h \
 		../FourInARow/QMLPlayScreen.h
-	D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/Emanuel_Kern/C++/QT/ConnectFourRepository/FourInARow_QML_SS14/FourInARow -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore -I. ..\FourInARow\QMLPlayScreen.h -o release\moc_QMLPlayScreen.cpp
+	D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/Emanuel_Kern/C++/QT/ConnectFourRepository/FourInARow_QML_SS14/FourInARow -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore -I. ..\FourInARow\QMLPlayScreen.h -o release\moc_QMLPlayScreen.cpp
 
 release/moc_QMLHighscoreScreen.cpp: D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickItem \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickitem.h \
@@ -704,7 +759,7 @@ release/moc_QMLHighscoreScreen.cpp: D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuic
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qcolor.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qrgb.h \
 		../FourInARow/QMLHighscoreScreen.h
-	D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/Emanuel_Kern/C++/QT/ConnectFourRepository/FourInARow_QML_SS14/FourInARow -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore -I. ..\FourInARow\QMLHighscoreScreen.h -o release\moc_QMLHighscoreScreen.cpp
+	D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/Emanuel_Kern/C++/QT/ConnectFourRepository/FourInARow_QML_SS14/FourInARow -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore -I. ..\FourInARow\QMLHighscoreScreen.h -o release\moc_QMLHighscoreScreen.cpp
 
 release/moc_QMLLoadScreen.cpp: D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickItem \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickitem.h \
@@ -809,7 +864,416 @@ release/moc_QMLLoadScreen.cpp: D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQu
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qcolor.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qrgb.h \
 		../FourInARow/QMLLoadScreen.h
-	D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/Emanuel_Kern/C++/QT/ConnectFourRepository/FourInARow_QML_SS14/FourInARow -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore -I. ..\FourInARow\QMLLoadScreen.h -o release\moc_QMLLoadScreen.cpp
+	D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/Emanuel_Kern/C++/QT/ConnectFourRepository/FourInARow_QML_SS14/FourInARow -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore -I. ..\FourInARow\QMLLoadScreen.h -o release\moc_QMLLoadScreen.cpp
+
+release/moc_GameDatabase.cpp: D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnamespace.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qconfig.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfeatures.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsystemdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qprocessordetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcompilerdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypeinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypetraits.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsysinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlogging.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qflags.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbasicatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_bootstrap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qgenericatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_msvc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv7.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv6.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv5.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_ia64.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_mips.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_x86.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_cxx11.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_gcc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_unix.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobalstatic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmutex.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnumeric.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstring.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qchar.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbytearray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrefcount.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qarraydata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringbuilder.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qalgorithms.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiterator.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qscopedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetatype.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvarlengtharray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontainerfwd.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qisenum.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlDatabase \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlQuery \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlQueryModel \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qabstractitemmodel.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvariant.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpair.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdebug.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qhash.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtextstream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiodevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlocale.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qshareddata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvector.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpoint.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qset.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontiguouscache.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdatastream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qregexp.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringmatcher.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QRegExp \
+		../FourInARow/GameSetup.h \
+		../FourInARow/playerdata.h \
+		../FourInARow/FIARApplicationSetup.h \
+		../FourInARow/GameDatabase.h
+	D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/Emanuel_Kern/C++/QT/ConnectFourRepository/FourInARow_QML_SS14/FourInARow -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore -I. ..\FourInARow\GameDatabase.h -o release\moc_GameDatabase.cpp
+
+release/moc_QMLSQLScreen.cpp: D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickItem \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickitem.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qtquickglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qconfig.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfeatures.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsystemdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qprocessordetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcompilerdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypeinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypetraits.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsysinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlogging.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qflags.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbasicatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_bootstrap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qgenericatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_msvc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv7.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv6.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv5.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_ia64.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_mips.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_x86.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_cxx11.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_gcc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_unix.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobalstatic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmutex.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnumeric.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqml.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlprivate.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qtqmlglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvariant.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbytearray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrefcount.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnamespace.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qarraydata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstring.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qchar.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringbuilder.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qalgorithms.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiterator.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetatype.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvarlengtharray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontainerfwd.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qisenum.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpair.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdebug.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qhash.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtextstream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiodevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qscopedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlocale.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qshareddata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvector.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpoint.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qset.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontiguouscache.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdatastream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qregexp.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringmatcher.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qurl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qurlquery.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlparserstatus.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlpropertyvaluesource.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmllist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetaobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlcomponent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlerror.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qjsvalue.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QList \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs_win.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qregion.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrect.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmargins.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsize.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qkeysequence.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfile.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfiledevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvector2d.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qtouchdevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qfont.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsharedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsharedpointer_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qaccessible.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qeventloop.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qcolor.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qrgb.h \
+		../FourInARow/GameDatabase.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlDatabase \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlQuery \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlQueryModel \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qabstractitemmodel.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QRegExp \
+		../FourInARow/GameSetup.h \
+		../FourInARow/playerdata.h \
+		../FourInARow/FIARApplicationSetup.h \
+		../FourInARow/QMLSQLScreen.h
+	D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/Emanuel_Kern/C++/QT/ConnectFourRepository/FourInARow_QML_SS14/FourInARow -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore -I. ..\FourInARow\QMLSQLScreen.h -o release\moc_QMLSQLScreen.cpp
+
+release/moc_QMLNewGameScreen.cpp: D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickItem \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickitem.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qtquickglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qconfig.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfeatures.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsystemdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qprocessordetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcompilerdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypeinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypetraits.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsysinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlogging.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qflags.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbasicatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_bootstrap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qgenericatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_msvc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv7.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv6.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv5.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_ia64.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_mips.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_x86.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_cxx11.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_gcc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_unix.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobalstatic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmutex.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnumeric.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqml.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlprivate.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qtqmlglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvariant.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbytearray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrefcount.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnamespace.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qarraydata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstring.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qchar.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringbuilder.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qalgorithms.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiterator.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetatype.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvarlengtharray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontainerfwd.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qisenum.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpair.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdebug.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qhash.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtextstream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiodevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qscopedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlocale.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qshareddata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvector.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpoint.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qset.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontiguouscache.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdatastream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qregexp.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringmatcher.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qurl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qurlquery.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlparserstatus.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlpropertyvaluesource.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmllist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetaobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlcomponent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlerror.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qjsvalue.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QList \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs_win.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qregion.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrect.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmargins.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsize.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qkeysequence.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfile.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfiledevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvector2d.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qtouchdevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qfont.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsharedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsharedpointer_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qaccessible.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qeventloop.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qcolor.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qrgb.h \
+		../FourInARow/QMLNewGameScreen.h
+	D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/Emanuel_Kern/C++/QT/ConnectFourRepository/FourInARow_QML_SS14/FourInARow -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore -I. ..\FourInARow\QMLNewGameScreen.h -o release\moc_QMLNewGameScreen.cpp
+
+release/moc_QMLOptions.cpp: D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickItem \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickitem.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qtquickglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qconfig.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfeatures.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsystemdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qprocessordetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcompilerdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypeinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypetraits.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsysinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlogging.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qflags.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbasicatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_bootstrap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qgenericatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_msvc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv7.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv6.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv5.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_ia64.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_mips.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_x86.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_cxx11.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_gcc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_unix.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobalstatic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmutex.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnumeric.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqml.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlprivate.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qtqmlglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvariant.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbytearray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrefcount.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnamespace.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qarraydata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstring.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qchar.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringbuilder.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qalgorithms.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiterator.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetatype.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvarlengtharray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontainerfwd.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qisenum.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpair.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdebug.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qhash.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtextstream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiodevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qscopedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlocale.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qshareddata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvector.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpoint.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qset.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontiguouscache.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdatastream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qregexp.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringmatcher.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qurl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qurlquery.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlparserstatus.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlpropertyvaluesource.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmllist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetaobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlcomponent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlerror.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qjsvalue.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QList \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs_win.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qregion.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrect.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmargins.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsize.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qkeysequence.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfile.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfiledevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvector2d.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qtouchdevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qfont.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsharedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsharedpointer_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qaccessible.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qeventloop.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qcolor.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qrgb.h \
+		../FourInARow/QMLOptions.h
+	D:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -ID:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/Emanuel_Kern/C++/QT/ConnectFourRepository/FourInARow_QML_SS14/FourInARow -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -ID:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore -I. ..\FourInARow\QMLOptions.h -o release\moc_QMLOptions.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -916,6 +1380,17 @@ release/main.o: ../FourInARow/main.cpp D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtG
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/QQmlProperty \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlproperty.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetaobject.h \
+		../FourInARow/fourinarowapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QLocale \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QTranslator \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtranslator.h \
+		../FourInARow/FIARNetworkGame.h \
+		../FourInARow/fourinarowgame.h \
+		../FourInARow/fourinarowboard.h \
+		../FourInARow/rowfield.h \
+		../FourInARow/FiarArtificialPlayer.h \
+		../FourInARow/GameSetup.h \
+		../FourInARow/FiarGameListener.h \
 		../FourInARow/qmlmainwindow.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickWindow \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickwindow.h \
@@ -968,11 +1443,21 @@ release/main.o: ../FourInARow/main.cpp D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtG
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickPaintedItem \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickpainteditem.h \
 		../FourInARow/QMLPlayScreen.h \
-		../FourInARow/fourinarowgame.h \
-		../FourInARow/fourinarowboard.h \
-		../FourInARow/rowfield.h \
 		../FourInARow/QMLHighscoreScreen.h \
-		../FourInARow/QMLLoadScreen.h
+		../FourInARow/QMLLoadScreen.h \
+		../FourInARow/QMLSQLScreen.h \
+		../FourInARow/GameDatabase.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlDatabase \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlQuery \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlQueryModel \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qabstractitemmodel.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QRegExp \
+		../FourInARow/playerdata.h \
+		../FourInARow/FIARApplicationSetup.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\FourInARow\main.cpp
 
 release/QMLBoard.o: ../FourInARow/QMLBoard.cpp ../FourInARow/QMLBoard.h \
@@ -1323,7 +1808,11 @@ release/qmlmainwindow.o: ../FourInARow/qmlmainwindow.cpp D:/Qt/Qt5.3.0/5.3/mingw
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfile.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfiledevice.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvector2d.h \
-		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qtouchdevice.h
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qtouchdevice.h \
+		../FourInARow/GameDataModel.h \
+		../FourInARow/playerdata.h \
+		../FourInARow/GameSetup.h \
+		../FourInARow/FIARApplicationSetup.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\qmlmainwindow.o ..\FourInARow\qmlmainwindow.cpp
 
 release/fourinarowboard.o: ../FourInARow/fourinarowboard.cpp ../FourInARow/fourinarowboard.h \
@@ -1504,10 +1993,25 @@ release/QMLPlayScreen.o: ../FourInARow/QMLPlayScreen.cpp ../FourInARow/QMLPlaySc
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qeventloop.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qcolor.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qrgb.h \
+		../FourInARow/FIARNetworkGame.h \
 		../FourInARow/fourinarowgame.h \
 		../FourInARow/fourinarowboard.h \
 		../FourInARow/rowfield.h \
-		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug
+		../FourInARow/FiarArtificialPlayer.h \
+		../FourInARow/FiarGameListener.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
+		../FourInARow/fourinarowapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QLocale \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QGuiApplication \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qguiapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qinputmethod.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QTranslator \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtranslator.h \
+		../FourInARow/GameSetup.h \
+		../FourInARow/GameDataModel.h \
+		../FourInARow/playerdata.h \
+		../FourInARow/FIARApplicationSetup.h \
+		../FourInARow/FiarGameListenerForQMLGui.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\QMLPlayScreen.o ..\FourInARow\QMLPlayScreen.cpp
 
 release/rowfield.o: ../FourInARow/rowfield.cpp ../FourInARow/rowfield.h \
@@ -1579,8 +2083,76 @@ release/rowfield.o: ../FourInARow/rowfield.cpp ../FourInARow/rowfield.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontiguouscache.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\rowfield.o ..\FourInARow\rowfield.cpp
 
-release/FiarArtificialPlayer.o: ../FourInARow/FiarArtificialPlayer.cpp ../FourInARow/fiarartificialplayer.h \
-		../FourInARow/rowfield.h
+release/FiarArtificialPlayer.o: ../FourInARow/FiarArtificialPlayer.cpp D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdebug.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qalgorithms.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qconfig.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfeatures.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsystemdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qprocessordetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcompilerdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypeinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypetraits.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsysinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlogging.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qflags.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbasicatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_bootstrap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qgenericatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_msvc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv7.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv6.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv5.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_ia64.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_mips.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_x86.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_cxx11.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_gcc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_unix.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobalstatic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmutex.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnumeric.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qhash.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qchar.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiterator.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrefcount.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpair.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtextstream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiodevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnamespace.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstring.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbytearray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qarraydata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringbuilder.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qscopedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetatype.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvarlengtharray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontainerfwd.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qisenum.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlocale.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvariant.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdatastream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qregexp.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringmatcher.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qshareddata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvector.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpoint.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qset.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontiguouscache.h \
+		../FourInARow/fiarartificialplayer.h \
+		../FourInARow/rowfield.h \
+		../FourInARow/fourinarowgame.h \
+		../FourInARow/fourinarowboard.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\FiarArtificialPlayer.o ..\FourInARow\FiarArtificialPlayer.cpp
 
 release/QMLHighscoreScreen.o: ../FourInARow/QMLHighscoreScreen.cpp ../FourInARow/QMLHighscoreScreen.h \
@@ -1685,7 +2257,12 @@ release/QMLHighscoreScreen.o: ../FourInARow/QMLHighscoreScreen.cpp ../FourInARow
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreapplication.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qeventloop.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qcolor.h \
-		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qrgb.h
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qrgb.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
+		../FourInARow/GameDataModel.h \
+		../FourInARow/playerdata.h \
+		../FourInARow/GameSetup.h \
+		../FourInARow/FIARApplicationSetup.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\QMLHighscoreScreen.o ..\FourInARow\QMLHighscoreScreen.cpp
 
 release/QMLLoadScreen.o: ../FourInARow/QMLLoadScreen.cpp D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
@@ -1791,8 +2368,947 @@ release/QMLLoadScreen.o: ../FourInARow/QMLLoadScreen.cpp D:/Qt/Qt5.3.0/5.3/mingw
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreapplication.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qeventloop.h \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qcolor.h \
-		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qrgb.h
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qrgb.h \
+		../FourInARow/GameDataModel.h \
+		../FourInARow/playerdata.h \
+		../FourInARow/GameSetup.h \
+		../FourInARow/FIARApplicationSetup.h \
+		../FourInARow/fourinarowapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QLocale \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QGuiApplication \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qguiapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qinputmethod.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QTranslator \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtranslator.h \
+		../FourInARow/FIARNetworkGame.h \
+		../FourInARow/fourinarowgame.h \
+		../FourInARow/fourinarowboard.h \
+		../FourInARow/rowfield.h \
+		../FourInARow/FiarArtificialPlayer.h \
+		../FourInARow/FiarGameListener.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\QMLLoadScreen.o ..\FourInARow\QMLLoadScreen.cpp
+
+release/GameDatabase.o: ../FourInARow/GameDatabase.cpp ../FourInARow/GameDatabase.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnamespace.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qconfig.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfeatures.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsystemdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qprocessordetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcompilerdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypeinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypetraits.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsysinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlogging.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qflags.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbasicatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_bootstrap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qgenericatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_msvc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv7.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv6.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv5.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_ia64.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_mips.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_x86.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_cxx11.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_gcc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_unix.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobalstatic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmutex.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnumeric.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstring.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qchar.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbytearray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrefcount.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qarraydata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringbuilder.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qalgorithms.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiterator.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qscopedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetatype.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvarlengtharray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontainerfwd.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qisenum.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlDatabase \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlQuery \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlQueryModel \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qabstractitemmodel.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvariant.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpair.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdebug.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qhash.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtextstream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiodevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlocale.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qshareddata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvector.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpoint.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qset.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontiguouscache.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdatastream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qregexp.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringmatcher.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QRegExp \
+		../FourInARow/GameSetup.h \
+		../FourInARow/playerdata.h \
+		../FourInARow/FIARApplicationSetup.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlError \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\GameDatabase.o ..\FourInARow\GameDatabase.cpp
+
+release/GameSetup.o: ../FourInARow/GameSetup.cpp ../FourInARow/GameSetup.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\GameSetup.o ..\FourInARow\GameSetup.cpp
+
+release/QMLSQLScreen.o: ../FourInARow/QMLSQLScreen.cpp ../FourInARow/QMLSQLScreen.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickItem \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickitem.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qtquickglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qconfig.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfeatures.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsystemdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qprocessordetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcompilerdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypeinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypetraits.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsysinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlogging.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qflags.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbasicatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_bootstrap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qgenericatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_msvc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv7.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv6.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv5.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_ia64.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_mips.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_x86.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_cxx11.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_gcc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_unix.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobalstatic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmutex.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnumeric.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqml.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlprivate.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qtqmlglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvariant.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbytearray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrefcount.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnamespace.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qarraydata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstring.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qchar.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringbuilder.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qalgorithms.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiterator.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetatype.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvarlengtharray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontainerfwd.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qisenum.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpair.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdebug.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qhash.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtextstream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiodevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qscopedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlocale.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qshareddata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvector.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpoint.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qset.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontiguouscache.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdatastream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qregexp.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringmatcher.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qurl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qurlquery.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlparserstatus.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlpropertyvaluesource.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmllist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetaobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlcomponent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlerror.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qjsvalue.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QList \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs_win.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qregion.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrect.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmargins.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsize.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qkeysequence.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfile.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfiledevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvector2d.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qtouchdevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qfont.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsharedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsharedpointer_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qaccessible.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qeventloop.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qcolor.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qrgb.h \
+		../FourInARow/GameDatabase.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlDatabase \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlQuery \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlQueryModel \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qabstractitemmodel.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QRegExp \
+		../FourInARow/GameSetup.h \
+		../FourInARow/playerdata.h \
+		../FourInARow/FIARApplicationSetup.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlError \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\QMLSQLScreen.o ..\FourInARow\QMLSQLScreen.cpp
+
+release/fourinarowapplication.o: ../FourInARow/fourinarowapplication.cpp D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/QQmlApplicationEngine \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlapplicationengine.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlengine.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qurl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbytearray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrefcount.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qconfig.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfeatures.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsystemdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qprocessordetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcompilerdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypeinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypetraits.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsysinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlogging.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qflags.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobalstatic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmutex.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnumeric.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbasicatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_bootstrap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qgenericatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_msvc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv7.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv6.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv5.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_ia64.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_mips.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_x86.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_cxx11.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_gcc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_unix.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnamespace.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qarraydata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstring.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qchar.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringbuilder.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qalgorithms.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiterator.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpair.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qurlquery.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qshareddata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdatastream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qscopedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiodevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetatype.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvarlengtharray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontainerfwd.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qisenum.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qregexp.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringmatcher.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdebug.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qhash.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtextstream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlocale.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvariant.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvector.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpoint.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qset.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontiguouscache.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qjsengine.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsharedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsharedpointer_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qjsvalue.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qtqmlglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlerror.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmldebug.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/QQmlEngine \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/QQmlContext \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlcontext.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/QQmlProperty \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlproperty.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetaobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
+		../FourInARow/fourinarowapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QLocale \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QGuiApplication \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qguiapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qeventloop.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs_win.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qinputmethod.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsize.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QTranslator \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtranslator.h \
+		../FourInARow/FIARNetworkGame.h \
+		../FourInARow/fourinarowgame.h \
+		../FourInARow/fourinarowboard.h \
+		../FourInARow/rowfield.h \
+		../FourInARow/FiarArtificialPlayer.h \
+		../FourInARow/GameSetup.h \
+		../FourInARow/FiarGameListener.h \
+		../FourInARow/GameDatabase.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlDatabase \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlQuery \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlQueryModel \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qabstractitemmodel.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QRegExp \
+		../FourInARow/playerdata.h \
+		../FourInARow/FIARApplicationSetup.h \
+		../FourInARow/GameDataModel.h \
+		../FourInARow/qmlmainwindow.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickWindow \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickwindow.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qtquickglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qopengl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qt_windows.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qopengles2ext.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qopenglext.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindow.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QEvent \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QMargins \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmargins.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QRect \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrect.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qsurface.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qsurfaceformat.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qpixmap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qpaintdevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qcolor.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qrgb.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qimage.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qtransform.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qmatrix.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qpolygon.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qregion.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qline.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qpainterpath.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qcursor.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qkeysequence.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfile.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfiledevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvector2d.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qtouchdevice.h \
+		../FourInARow/QMLBoard.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickItem \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickitem.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqml.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlprivate.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlparserstatus.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlpropertyvaluesource.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmllist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlcomponent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QList \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qfont.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qaccessible.h \
+		../FourInARow/QMLBoardTile.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickPaintedItem \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickpainteditem.h \
+		../FourInARow/QMLPlayScreen.h \
+		../FourInARow/QMLHighscoreScreen.h \
+		../FourInARow/QMLLoadScreen.h \
+		../FourInARow/QMLSQLScreen.h \
+		../FourInARow/QMLNewGameScreen.h \
+		../FourInARow/QMLOptions.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\fourinarowapplication.o ..\FourInARow\fourinarowapplication.cpp
+
+release/GameDataModel.o: ../FourInARow/GameDataModel.cpp D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdebug.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qalgorithms.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qconfig.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfeatures.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsystemdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qprocessordetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcompilerdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypeinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypetraits.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsysinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlogging.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qflags.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbasicatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_bootstrap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qgenericatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_msvc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv7.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv6.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv5.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_ia64.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_mips.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_x86.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_cxx11.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_gcc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_unix.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobalstatic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmutex.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnumeric.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qhash.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qchar.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiterator.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrefcount.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpair.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtextstream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiodevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnamespace.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstring.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbytearray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qarraydata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringbuilder.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qscopedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetatype.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvarlengtharray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontainerfwd.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qisenum.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlocale.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvariant.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdatastream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qregexp.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringmatcher.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qshareddata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvector.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpoint.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qset.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontiguouscache.h \
+		../FourInARow/GameDataModel.h \
+		../FourInARow/playerdata.h \
+		../FourInARow/GameSetup.h \
+		../FourInARow/FIARApplicationSetup.h \
+		../FourInARow/GameDatabase.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlDatabase \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlQuery \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QSqlQueryModel \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qabstractitemmodel.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QRegExp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\GameDataModel.o ..\FourInARow\GameDataModel.cpp
+
+release/playerdata.o: ../FourInARow/playerdata.cpp ../FourInARow/playerdata.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\playerdata.o ..\FourInARow\playerdata.cpp
+
+release/QMLNewGameScreen.o: ../FourInARow/QMLNewGameScreen.cpp ../FourInARow/QMLNewGameScreen.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickItem \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickitem.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qtquickglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qconfig.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfeatures.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsystemdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qprocessordetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcompilerdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypeinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypetraits.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsysinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlogging.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qflags.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbasicatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_bootstrap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qgenericatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_msvc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv7.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv6.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv5.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_ia64.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_mips.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_x86.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_cxx11.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_gcc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_unix.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobalstatic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmutex.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnumeric.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqml.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlprivate.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qtqmlglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvariant.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbytearray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrefcount.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnamespace.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qarraydata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstring.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qchar.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringbuilder.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qalgorithms.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiterator.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetatype.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvarlengtharray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontainerfwd.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qisenum.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpair.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdebug.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qhash.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtextstream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiodevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qscopedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlocale.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qshareddata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvector.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpoint.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qset.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontiguouscache.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdatastream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qregexp.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringmatcher.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qurl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qurlquery.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlparserstatus.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlpropertyvaluesource.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmllist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetaobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlcomponent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlerror.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qjsvalue.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QList \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs_win.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qregion.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrect.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmargins.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsize.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qkeysequence.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfile.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfiledevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvector2d.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qtouchdevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qfont.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsharedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsharedpointer_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qaccessible.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qeventloop.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qcolor.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qrgb.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
+		../FourInARow/GameDataModel.h \
+		../FourInARow/playerdata.h \
+		../FourInARow/GameSetup.h \
+		../FourInARow/FIARApplicationSetup.h \
+		../FourInARow/fourinarowapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QLocale \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QGuiApplication \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qguiapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qinputmethod.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QTranslator \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtranslator.h \
+		../FourInARow/FIARNetworkGame.h \
+		../FourInARow/fourinarowgame.h \
+		../FourInARow/fourinarowboard.h \
+		../FourInARow/rowfield.h \
+		../FourInARow/FiarArtificialPlayer.h \
+		../FourInARow/FiarGameListener.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\QMLNewGameScreen.o ..\FourInARow\QMLNewGameScreen.cpp
+
+release/FIARNetworkGame.o: ../FourInARow/FIARNetworkGame.cpp D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdebug.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qalgorithms.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qconfig.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfeatures.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsystemdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qprocessordetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcompilerdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypeinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypetraits.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsysinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlogging.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qflags.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbasicatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_bootstrap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qgenericatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_msvc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv7.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv6.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv5.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_ia64.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_mips.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_x86.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_cxx11.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_gcc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_unix.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobalstatic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmutex.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnumeric.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qhash.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qchar.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiterator.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrefcount.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpair.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtextstream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiodevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnamespace.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstring.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbytearray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qarraydata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringbuilder.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qscopedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetatype.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvarlengtharray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontainerfwd.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qisenum.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlocale.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvariant.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdatastream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qregexp.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringmatcher.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qshareddata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvector.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpoint.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qset.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontiguouscache.h \
+		../FourInARow/FIARNetworkGame.h \
+		../FourInARow/fourinarowgame.h \
+		../FourInARow/fourinarowboard.h \
+		../FourInARow/rowfield.h \
+		../FourInARow/FiarArtificialPlayer.h \
+		../FourInARow/fourinarowapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QLocale \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QGuiApplication \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qguiapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qeventloop.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs_win.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qinputmethod.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsize.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QTranslator \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtranslator.h \
+		../FourInARow/GameSetup.h \
+		../FourInARow/FiarGameListener.h \
+		../FourInARow/GameDataModel.h \
+		../FourInARow/playerdata.h \
+		../FourInARow/FIARApplicationSetup.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\FIARNetworkGame.o ..\FourInARow\FIARNetworkGame.cpp
+
+release/FIARApplicationSetup.o: ../FourInARow/FIARApplicationSetup.cpp ../FourInARow/FIARApplicationSetup.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\FIARApplicationSetup.o ..\FourInARow\FIARApplicationSetup.cpp
+
+release/FiarGameListener.o: ../FourInARow/FiarGameListener.cpp ../FourInARow/FiarGameListener.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\FiarGameListener.o ..\FourInARow\FiarGameListener.cpp
+
+release/FiarGameListenerForQMLGui.o: ../FourInARow/FiarGameListenerForQMLGui.cpp ../FourInARow/FiarGameListenerForQMLGui.h \
+		../FourInARow/QMLPlayScreen.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickItem \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickitem.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qtquickglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qconfig.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfeatures.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsystemdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qprocessordetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcompilerdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypeinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypetraits.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsysinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlogging.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qflags.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbasicatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_bootstrap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qgenericatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_msvc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv7.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv6.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv5.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_ia64.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_mips.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_x86.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_cxx11.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_gcc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_unix.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobalstatic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmutex.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnumeric.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqml.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlprivate.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qtqmlglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvariant.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbytearray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrefcount.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnamespace.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qarraydata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstring.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qchar.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringbuilder.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qalgorithms.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiterator.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetatype.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvarlengtharray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontainerfwd.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qisenum.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpair.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdebug.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qhash.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtextstream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiodevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qscopedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlocale.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qshareddata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvector.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpoint.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qset.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontiguouscache.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdatastream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qregexp.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringmatcher.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qurl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qurlquery.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlparserstatus.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlpropertyvaluesource.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmllist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetaobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlcomponent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlerror.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qjsvalue.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QList \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs_win.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qregion.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrect.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmargins.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsize.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qkeysequence.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfile.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfiledevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvector2d.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qtouchdevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qfont.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsharedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsharedpointer_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qaccessible.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qeventloop.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qcolor.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qrgb.h \
+		../FourInARow/FIARNetworkGame.h \
+		../FourInARow/fourinarowgame.h \
+		../FourInARow/fourinarowboard.h \
+		../FourInARow/rowfield.h \
+		../FourInARow/FiarArtificialPlayer.h \
+		../FourInARow/FiarGameListener.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\FiarGameListenerForQMLGui.o ..\FourInARow\FiarGameListenerForQMLGui.cpp
+
+release/QMLOptions.o: ../FourInARow/QMLOptions.cpp ../FourInARow/QMLOptions.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/QQuickItem \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qquickitem.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick/qtquickglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qconfig.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfeatures.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsystemdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qprocessordetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcompilerdetection.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypeinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtypetraits.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsysinfo.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlogging.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qflags.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbasicatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_bootstrap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qgenericatomic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_msvc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv7.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv6.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_armv5.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_ia64.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_mips.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_x86.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_cxx11.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_gcc.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qatomic_unix.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qglobalstatic.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmutex.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnumeric.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqml.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlprivate.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qtqmlglobal.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvariant.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qbytearray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrefcount.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qnamespace.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qarraydata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstring.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qchar.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringbuilder.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qalgorithms.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiterator.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetatype.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvarlengtharray.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontainerfwd.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qisenum.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobjectdefs_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmap.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpair.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdebug.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qhash.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtextstream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qiodevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qscopedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qobject_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qlocale.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qshareddata.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qvector.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qpoint.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qset.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcontiguouscache.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringlist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qdatastream.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qregexp.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qstringmatcher.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qurl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qurlquery.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlparserstatus.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlpropertyvaluesource.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmllist.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmetaobject.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlcomponent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qqmlerror.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml/qjsvalue.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QList \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qevent.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qwindowdefs_win.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qregion.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qrect.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qmargins.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsize.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qkeysequence.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfile.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qfiledevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvector2d.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qtouchdevice.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qfont.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsharedpointer.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qsharedpointer_impl.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qaccessible.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qcoreapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qeventloop.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qcolor.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qrgb.h \
+		../FourInARow/GameDataModel.h \
+		../FourInARow/playerdata.h \
+		../FourInARow/GameSetup.h \
+		../FourInARow/FIARApplicationSetup.h \
+		../FourInARow/fourinarowapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QLocale \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QGuiApplication \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qguiapplication.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qinputmethod.h \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QTranslator \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtranslator.h \
+		../FourInARow/FIARNetworkGame.h \
+		../FourInARow/fourinarowgame.h \
+		../FourInARow/fourinarowboard.h \
+		../FourInARow/rowfield.h \
+		../FourInARow/FiarArtificialPlayer.h \
+		../FourInARow/FiarGameListener.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\QMLOptions.o ..\FourInARow\QMLOptions.cpp
 
 release/qrc_qml.o: release/qrc_qml.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\qrc_qml.o release\qrc_qml.cpp
@@ -1814,6 +3330,18 @@ release/moc_QMLHighscoreScreen.o: release/moc_QMLHighscoreScreen.cpp
 
 release/moc_QMLLoadScreen.o: release/moc_QMLLoadScreen.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_QMLLoadScreen.o release\moc_QMLLoadScreen.cpp
+
+release/moc_GameDatabase.o: release/moc_GameDatabase.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_GameDatabase.o release\moc_GameDatabase.cpp
+
+release/moc_QMLSQLScreen.o: release/moc_QMLSQLScreen.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_QMLSQLScreen.o release\moc_QMLSQLScreen.cpp
+
+release/moc_QMLNewGameScreen.o: release/moc_QMLNewGameScreen.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_QMLNewGameScreen.o release\moc_QMLNewGameScreen.cpp
+
+release/moc_QMLOptions.o: release/moc_QMLOptions.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_QMLOptions.o release\moc_QMLOptions.cpp
 
 ####### Install
 

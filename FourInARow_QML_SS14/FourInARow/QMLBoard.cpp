@@ -13,8 +13,6 @@ QMLBoard::QMLBoard(QQuickItem *parent) :
 void QMLBoard::setDimension(const QVector2D &dimension)
 {
     mDimension = dimension;
-    qDebug() << "setDimension()";
-
     dimensionSet = true;
     emit dimensionChanged();
 }

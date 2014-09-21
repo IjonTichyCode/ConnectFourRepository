@@ -10,8 +10,6 @@ Item {
     property QMLMainWindow parentWindow
     property real screenChoiceX: 0
 
-
-
     states: [
         State {
             name: "STARTSCREEN"
@@ -47,11 +45,24 @@ Item {
                 target: mainWindowItem
                 screenChoiceX: -4* mainWindowItem.width
             }
+        },
+        State {
+            name: "SQLSCREEN"
+            PropertyChanges {
+                target: mainWindowItem
+                screenChoiceX: -5* mainWindowItem.width
+            }
         }
 
     ]
 
     state: "STARTSCREEN"
+
+    function preClose() {
+        if (state=="PLAYSCREEN") {
+            playScreen.saveGame(playScreen.time)
+        }
+    }
 
     Row {
         width: parent.width
@@ -64,7 +75,8 @@ Item {
 
             onNewGameClicked: mainWindowItem.state = "NEWGAME"
             onHighscoreClicked: mainWindowItem.state = "HIGHSCORE"
-            onContinueClicked: mainWindowItem.state = "PLAYSCREEN"
+            onContinueClicked: loadScreen.loadLatestGame()
+//            onContinueClicked: mainWindowItem.state = "SQLSCREEN"
             onLoadGameClicked: mainWindowItem.state = "LOADSCREEN"
         }
 
@@ -73,16 +85,46 @@ Item {
             design: optionsPanel.optDesign
             visible: true
 
-            onCancelClicked: mainWindowItem.state = "STARTSCREEN"
-            onMenuClicked: mainWindowItem.state = "STARTSCREEN"
+            onCancelClicked: {
+                mainWindowItem.state = "STARTSCREEN"
+                playScreen.clear()
+            }
+
+            onMenuClicked: {
+                mainWindowItem.state = "STARTSCREEN"
+                playScreen.clear()
+            }
+
+            onGameSaved: {
+                loadScreen.clear()
+                loadScreen.populate()
+            }
+            onHighscoreChanged: {
+                highscoreScreen.clear();
+                highscoreScreen.populate();
+            }
         }
 
         NewGameScreen {
             id: newGameScreen
             visible: true
+//            onColumnsChanged: playScreen.columns = newGameScreen.columns
+//            onRowsChanged: playScreen.rows = newGameScreen.rows
 
             onCancelClicked: mainWindowItem.state = "STARTSCREEN"
-            onStartClicked: mainWindowItem.state = "PLAYSCREEN"
+            onStartClicked: {
+                playScreen.columns = newGameScreen.columns
+                playScreen.rows = newGameScreen.rows
+                mainWindowItem.state = "PLAYSCREEN"
+                playScreen.clear()
+                playScreen.endLoadGame()
+            }
+
+            onNewPlayerAdded: {
+                highscoreScreen.clear()
+                highscoreScreen.populate()
+            }
+
         }
 
         HighscoreScreen {
@@ -97,11 +139,22 @@ Item {
             visible: true
 
             onBackClicked: mainWindowItem.state = "STARTSCREEN"
+            onStartLoadGame: playScreen.startLoadGame()
+            onEndLoadGame: {
+                playScreen.endLoadGame()
+                mainWindowItem.state = "PLAYSCREEN"
+            }
+            onSetBoardDimension: {
+                playScreen.columns = columns
+                playScreen.rows = rows
+            }
+        }
+
+        SQLScreen {
+            onBackClicked: mainWindowItem.state = "STARTSCREEN"
         }
 
     }
-
-
 
     Options {
         id: optionsPanel
@@ -141,6 +194,10 @@ Item {
             }
         }
 
+    }
+
+    function loadOptions() {
+        optionsPanel.qmlComponentCompleted()
     }
 
 }

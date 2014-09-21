@@ -56,7 +56,6 @@ MoveResult FourInARowGame::move(int column) {
     }
     --latestTokenRow;
 
-
     if (board.rowField.addToken(board.nextPlayer, column, latestTokenRow ) ) {
         gameFinished = true;
         return MoveResult::WIN;
@@ -76,6 +75,26 @@ MoveResult FourInARowGame::move(int column) {
     board.nextPlayer %= 2;
 
     return MoveResult::SUCCESS;
+}
+
+void FourInARowGame::removeToken(int column)
+{
+    unsigned short columnMask = (board.blackTokens[column] | board.whiteTokens[column]) >>1;
+    board.blackTokens[column] &= columnMask;
+    board.whiteTokens[column] &= columnMask;
+
+    for (latestTokenRow=0; columnMask>0; ++latestTokenRow) {
+        columnMask >>= 1;
+    }
+
+
+    if (gameFinished) {
+        gameFinished = false;
+    }else{
+        board.nextPlayer = (board.nextPlayer+1)%2;
+        board.rowField.removeToken(board.nextPlayer, column, latestTokenRow);
+    }
+    --latestTokenRow;
 }
 
 int FourInARowGame::getColumnCount() const {

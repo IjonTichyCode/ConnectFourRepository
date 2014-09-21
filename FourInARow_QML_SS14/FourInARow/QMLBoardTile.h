@@ -5,6 +5,9 @@
 #include<QQuickPaintedItem>
 #include "QMLBoard.h"
 
+/**
+ * @brief The QMLBoardTile class is obsolete
+ */
 class QMLBoardTile : public QQuickItem
 {
     Q_OBJECT

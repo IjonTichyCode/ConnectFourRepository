@@ -15,6 +15,7 @@ FourInARowBoard:: FourInARowBoard(int player, int columns, int rows):
         blackTokens[i] = 0;
     }
 
+    //create a bitmask with as many bits set as tokens in a full column
     fullColumnMask = 1;
     fullColumnMask <<= rows;
     fullColumnMask -= 1;

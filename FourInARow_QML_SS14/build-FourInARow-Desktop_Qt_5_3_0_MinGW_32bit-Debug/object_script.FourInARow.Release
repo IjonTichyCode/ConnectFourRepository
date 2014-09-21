@@ -10,6 +10,18 @@ INPUT(
 ./release\FiarArtificialPlayer.o
 ./release\QMLHighscoreScreen.o
 ./release\QMLLoadScreen.o
+./release\GameDatabase.o
+./release\GameSetup.o
+./release\QMLSQLScreen.o
+./release\fourinarowapplication.o
+./release\GameDataModel.o
+./release\playerdata.o
+./release\QMLNewGameScreen.o
+./release\FIARNetworkGame.o
+./release\FIARApplicationSetup.o
+./release\FiarGameListener.o
+./release\FiarGameListenerForQMLGui.o
+./release\QMLOptions.o
 ./release\qrc_qml.o
 ./release\moc_QMLBoard.o
 ./release\moc_QMLBoardTile.o
@@ -17,4 +29,8 @@ INPUT(
 ./release\moc_QMLPlayScreen.o
 ./release\moc_QMLHighscoreScreen.o
 ./release\moc_QMLLoadScreen.o
+./release\moc_GameDatabase.o
+./release\moc_QMLSQLScreen.o
+./release\moc_QMLNewGameScreen.o
+./release\moc_QMLOptions.o
 );

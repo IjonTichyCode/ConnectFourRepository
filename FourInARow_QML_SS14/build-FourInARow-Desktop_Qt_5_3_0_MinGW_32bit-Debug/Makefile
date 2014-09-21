@@ -177,6 +177,7 @@ Makefile: ../FourInARow/FourInARow.pro D:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win
 		../FourInARow/FourInARow.pro \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Quick.prl \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Qml.prl \
+		D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Sql.prl \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Network.prl \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Gui.prl \
 		D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Core.prl
@@ -299,6 +300,7 @@ D:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\lex.prf:
 ..\FourInARow\FourInARow.pro:
 D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Quick.prl:
 D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Qml.prl:
+D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Sql.prl:
 D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Network.prl:
 D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Gui.prl:
 D:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Core.prl:

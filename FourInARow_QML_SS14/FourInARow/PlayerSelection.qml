@@ -7,17 +7,22 @@ Item {
     width: parent.width
     height: Style.unit() * 1.5
 
-    property string playerId
+    property int playerId
 //    property real zOffset: 0
     property PlayerList playerList
     property string player: "Arthur"
+
+    // first or second player of the game
+    property int selectionId;
+
+    signal newPlayer
 
     Column {
         anchors.fill: parent
 
         Text {
             color: Style.textColor
-            text: qsTr("player") + " " + playerId + ":"
+            text: qsTr("player") + " " + selectionId + ":"
             width: parent.width
             height: Style.unit()*.75
             font.pixelSize: Style.p()
@@ -96,19 +101,12 @@ Item {
                 fontSize: Style.p()
                 height: parent.height
                 width: parent.width * .27
+                onClicked: newPlayer()
             }
 
         }
 
     }
-
-    Component.onCompleted: {
-        for (var i=0; i<15; ++i) {
-            playerList.addEntry("Silke"+i, testCounter);
-        }
-    }
-
-
 
 }
 

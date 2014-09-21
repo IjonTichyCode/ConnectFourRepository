@@ -1,0 +1,121 @@
+drop table players;
+drop table games;
+
+create table players (name text UNIQUE, iscpu TINYINT, level TINYINT, wins REAL default 0, losses REAL default 0, ties REAL default 0, datum text default (dateTime()))
+
+
+
+#options
+create table options (
+	fullscreen TINYINT,
+	antialiasing TINYINT,
+	width INT, height INT,
+	player0Id INT,
+	player1Id INT,
+	design TINYINT,
+	color0 REAL,
+	color1 REAL,
+	useTimer TINYINT,
+	maxTime INT,
+	language INT
+)
+
+insert into options (fullscreen, antialiasing, width, height, player0Id, player1Id, design, color0, color1, useTimer, maxTime) 
+	values (0, 1, 360, 600, NULL, NULL, 0, 0.1, 0.3, 0, 3)
+	
+select (fullscreen, antialiasing, width, height, player0Id, player1Id, design, color0, color1, useTimer, maxTime, columns, rows, language) from options
+
+# player selection
+
+select oid, name, iscpu, level, datum, wins, losses, ties from players order by datum desc
+
+# highscore query
+select oid, name, iscpu, wins, losses, ties from players order by wins/losses desc
+
+select oid, name
+
+insert into players (name, iscpu, level, wins, losses, ties) values ('Horst', 1, 0, 2, 6, 1);
+insert into players (name, iscpu, level, wins, losses, ties) values ('Kerstin', 1, 1, 3, 5, 1);
+insert into players (name, iscpu, level, wins, losses, ties) values ('Silke', 1, 1,  2, 4, 5);
+insert into players (name, iscpu, level, wins, losses, ties) values ('Bernadette', 2, 1, 5, 5, 1);
+insert into players (name, iscpu, level, wins, losses, ties) values ('Robert', 1, 2, 5, 4, 1);
+insert into players (name, iscpu, level, wins, losses, ties) values ('Heike', 0, 0, 5, 3, 1);
+insert into players (name, iscpu, level, wins, losses, ties) values ('Gunther', 0, 0,  5, 2, 1);
+insert into players (name, iscpu, level, wins, losses, ties) values ('Giselher', 0, 0, 5, 1, 1);
+insert into players (name, iscpu, level, wins, losses, ties) values ('Siegfried', 0, 0, 5, 0, 1);
+insert into players (name, iscpu, level, wins, losses, ties) values ('Kunigunde', 0, 0, 1, 6, 1);
+insert into players (name, iscpu, level, wins, losses, ties) values ('Sido', 0, 0, 1, 7, 1);
+insert into players (name, iscpu, level, wins, losses, ties) values ('Emanuel', 0, 0, 1, 8, 1);
+
+insert into players (name, iscpu, level) values ('Robert', 0, 0);
+insert into players (name, iscpu, level) values ('Gunther', 0, 0);
+
+
+drop table games;
+create table games (
+	player0,
+	player1,
+	movehistory text, 
+	moves int,
+	datum text default (dateTime()),
+	columns tinyint default 7,
+	rows tinyint default 6,
+	useTimer tinyint default 0,
+	maxTime tinyint default 3,
+	time real default 0,
+	FOREIGN KEY (player0) REFERENCES player(oid), 
+	FOREIGN KEY (player1) REFERENCES player(oid) 
+);
+
+# load a game query
+select player0, player1, movehistory, moves, columns, rows from games where oid= gameId
+	
+
+
+insert into player (name) VALUES ('Horst');
+
+select (name) from player;
+
+select (player0, player1, 
+
+
+select name, name1, moves from
+	players, (select oid, name as name1 from players) as players1, games
+	where players.oid = games.player0 and players1.oid = games.player1
+	order by moves
+	
+select date(datum), time(datum), name, name1 from
+	players, (select oid, name as name1 from players) as players1, games
+	where players.oid=games.player0 and players1.oid=games.player1 
+		and finished=0 and movehistory not null
+	order by datum desc
+	
+select gameOid, name0, name1, datum from 
+	(select oid, name as name0 from players) as players0,
+	(select oid, name as name1 from players) as players1,
+	(select oid as gameOid, player0, player1, datum from games) as gamesTmp
+	where players0.oid=player0 and players1.oid=player1 
+	order by datum desc
+	
+insert into players (name, iscpu, level) values ('Horst', 1, 0)
+insert into players (name, iscpu, level) values ('Philipp', 1, 0)
+insert into players (name, iscpu, level) values ('Einstein', 1, 0)
+insert into players (name) values ('Jenny')
+
+insert into games (player0, player1, moves) values 
+	((select oid from players where name='Einstein'), (select oid from players where name='Horst'), 9);
+	
+insert into games (player0, player1, moves) values 
+	((select oid from players where name='Philipp'), (select oid from players where name='Horst'), 14);
+	
+insert into games (player0, player1, moves) values 
+	((select oid from players where name='Jenny'), (select oid from players where name='Horst'), 21);
+	
+insert into games (player0, player1, moves) values 
+	((select oid from players where name='Philipp'), (select oid from players where name='Jenny'), 17);
+	
+insert into games (player0, player1, moves) values 
+	((select oid from players where name='Jenny'), (select oid from players where name='Philipp'), 24);	
+	
+insert into games (player0, player1, moves) values 
+	((select oid from players where name='Einstein'), (select oid from players where name='Jenny'), 13);	

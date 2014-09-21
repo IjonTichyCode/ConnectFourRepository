@@ -6,11 +6,12 @@ Item {
 
     signal makeMove(int column)
     signal drop(int column, int row, real time)
+    signal winDrop(int column, int row, real time)
+    signal tieDrop(int column, int row, real time)
 
     property real edgeLength: 50
     property variant imageSources:
-        ["/resources/token.png", "/resources/token.svg", "/resources/token.png"]
-//    property string imageSrc: "resources/token.png"
+        ["/resources/token0.png", "/resources/token1.svg", "/resources/token2.svg", "resources/tokenWin.svg", "resources/tokenTie.svg"]
 
     property color color: "yellow"
     property int design: 0
@@ -18,8 +19,10 @@ Item {
     property real dropTime: 0
     property SoundEffect bounce
     property SoundEffect slide
+    property SoundEffect error
     property real column: 0
     property real row: 0
+    property real errorRow: 0
 
     onDrop: {
         dropTime = time
@@ -31,8 +34,21 @@ Item {
         soundTimer.start();
     }
 
+    onWinDrop: {
+        dropTime = time
+        token.column = column
+        token.row = row
+        interactive = false
+    }
+
+    function showError() {
+        dropTime = 150
+        errorRow = .5
+        errorAnimationTimer.start()
+    }
+
     x: column * edgeLength
-    y: parent.height - (row+1) * edgeLength;
+    y: parent.height - (row-errorRow+1) * edgeLength;
     z: -1
     width: edgeLength
     height: edgeLength
@@ -41,6 +57,14 @@ Item {
         PropertyAnimation {
             properties: "row"
             easing.type: Easing.OutBounce
+            duration: dropTime
+        }
+    }
+
+    Behavior on errorRow {
+        PropertyAnimation {
+            properties: "errorRow"
+            easing.type: Easing.InQuad
             duration: dropTime
         }
     }
@@ -70,6 +94,15 @@ Item {
                     break
             }
         }
+    }
+
+    Timer {
+        id: errorAnimationTimer
+        interval: dropTime;
+        running: false;
+        repeat: false;
+
+        onTriggered: errorRow = 0
     }
 
     Rectangle {

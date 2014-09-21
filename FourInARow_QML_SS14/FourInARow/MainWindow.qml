@@ -7,13 +7,14 @@ QMLMainWindow {
     id: mainWindow
     title: qsTr("four in a row")
     visible: true
-    width: 360
-    height: 600
+
     property real unit: height < 2*width ? 0.1 * height : 0.2 * width
 
     color: Style.backgroundColor
 
     property MainWindowItem mainWindowItem
+
+    onClosing: mainWindowItem.preClose()
 
     Component.onCompleted: {
         Style.mainWindow = mainWindow
@@ -33,7 +34,7 @@ QMLMainWindow {
         var mainWindowItemComponent = Qt.createComponent("MainWindowItem.qml");
         mainWindowItem = mainWindowItemComponent.createObject(mainWindow);
         mainWindowItem.parentWindow = mainWindow
-
+        mainWindowItem.loadOptions()
     }
 
 
