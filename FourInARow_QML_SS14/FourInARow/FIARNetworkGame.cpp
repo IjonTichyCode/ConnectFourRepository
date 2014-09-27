@@ -10,7 +10,7 @@
 
 FIARNetworkGame::FIARNetworkGame(int startPlayer):
     FourInARowGame(startPlayer),
-    generator((int)this),
+//    generator(),
     randomizer(0, getColumnCount()-1)
 {
     aiPlayer.setDifficulty(3);

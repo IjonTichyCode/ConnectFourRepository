@@ -1,6 +1,6 @@
 #include <QDebug>
 
-#include "fiarartificialplayer.h"
+#include "FiarArtificialPlayer.h"
 
 using namespace std;
 

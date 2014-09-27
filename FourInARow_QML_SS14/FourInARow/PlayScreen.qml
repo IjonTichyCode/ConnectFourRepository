@@ -175,15 +175,18 @@ QMLPlayScreen {
             SimpleButton {
                 id: saveButton
                 label: qsTr("save")
+                fontSize: Style.p()
 
                 height: parent.height
                 width: parent.width/3
                 onClicked: playScreen.saveClicked()
+
             }
 
             SimpleButton {
                 id: menuButton
                 label: qsTr("menu")
+                fontSize: Style.p()
 
                 height: parent.height
                 width: parent.width/3
@@ -194,6 +197,7 @@ QMLPlayScreen {
             SimpleButton {
                 id: cancelButton
                 label: qsTr("cancel")
+                fontSize: Style.p()
 
                 height: parent.height
                 width: parent.width/3
