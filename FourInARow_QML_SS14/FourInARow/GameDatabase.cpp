@@ -20,6 +20,58 @@ GameDatabase::GameDatabase(QObject *parent) :
         "and finished=0 "
         "order by datum desc" //"and movehistory not null"
     ),
+    queryCreateTablePlayers(
+        "create table players "
+        "(name text UNIQUE, iscpu TINYINT, level TINYINT, "
+        "wins REAL default 0, losses REAL default 0, ties REAL default 0, "
+        "datum text default (dateTime()))"
+    ),
+    queryCreateTableGames(
+        "create table games ("
+        "player0,"
+        "player1,"
+        "movehistory text, "
+        "moves int,"
+        "datum text default (dateTime()),"
+        "columns tinyint default 7,"
+        "rows tinyint default 6,"
+        "useTimer tinyint default 0,"
+        "maxTime tinyint default 3,"
+        "time real default 0,"
+        "FOREIGN KEY (player0) REFERENCES player(oid), "
+        "FOREIGN KEY (player1) REFERENCES player(oid) "
+        ");"
+    ),
+    queryCreateTableOptions(
+        "create table options ("
+        "fullscreen TINYINT,"
+            "antialiasing TINYINT,"
+            "width INT, height INT,"
+            "player0Id INT,"
+            "player1Id INT,"
+            "design TINYINT,"
+            "color0 REAL,"
+            "color1 REAL,"
+            "useTimer TINYINT,"
+            "maxTime INT,"
+            "columns TINYINT,"
+            "rows TINYINT,"
+            "language INT"
+        ");"
+    ),
+    queryInsertPlayerHorst(
+       "insert into players (name, iscpu, level, wins, losses, ties) "
+       "values ('Horst', 0, 0, 2, 6, 1);"
+    ),
+    queryInsertPlayerKerstin(
+        "insert into players (name, iscpu, level, wins, losses, ties) "
+        "values ('Kerstin', 1, 1, 2, 5, 1);"
+    ),
+    queryInsertOptions(
+      "insert into options (fullscreen, antialiasing, width, height, "
+      "player0Id, player1Id, design, color0, color1, useTimer, maxTime, columns, rows, language) "
+      "values (0, 1, 360, 600, 1, 2, 0, 0.1, 0.3, 0, 3, 7, 6, 0);"
+    ),
     cpuRegExp(" (CPU: level ?)", Qt::CaseSensitive, QRegExp::Wildcard)
 {
     database = QSqlDatabase::addDatabase("QSQLITE");
@@ -28,6 +80,8 @@ GameDatabase::GameDatabase(QObject *parent) :
     database.setUserName("fourInARowGame");
     database.setPassword("sdgmkgdbadgbaeh");
     database.open();
+    database.open();
+    qDebug() << database.lastError().databaseText();
     databaseInstance = this;
 }
 
@@ -54,7 +108,16 @@ QSqlDatabase * GameDatabase::getDatabase()
 void GameDatabase::getPlayers(map<int, PlayerData> &players) const
 {   
     QSqlQuery query= database.exec("select oid, name, iscpu, level, datum, wins, losses, ties from players order by datum desc");
-    qDebug() << query.lastError().databaseText();
+
+    if (query.lastError().isValid()) {
+        qDebug() << "create standard players";
+        database.exec(queryCreateTablePlayers);
+        database.exec(queryInsertPlayerHorst);
+        database.exec(queryInsertPlayerKerstin);
+        database.exec(queryCreateTableGames);
+        getPlayers(players);
+        return;
+    }
     players.clear();
 
     while (query.next()) {
@@ -102,8 +165,9 @@ void GameDatabase::getSavedGames(vector<GameSetup> & games)
     QSqlQuery savedGames = database.exec(queryString);
 
     if (savedGames.lastError().isValid()) {
-        qDebug() << queryString;
-        qDebug() << "GameDatabase: getSavedGames(...): " << savedGames.lastError();
+//        qDebug() << queryString;
+//        qDebug() << "GameDatabase: getSavedGames(...): " << savedGames.lastError();
+        database.exec(queryCreateTableGames);
     }
 
     games.clear();
@@ -249,6 +313,14 @@ void GameDatabase::getAppSetup(FIARApplicationSetup &appSetup)
         "select fullscreen, antialiasing, width, height, player0Id, "
         "player1Id, design, color0, color1, useTimer, maxTime, columns, rows, language from options"
     );
+
+    if (optQuery.lastError().isValid()) {
+        qDebug() << optQuery.lastError().databaseText();
+        database.exec(queryCreateTableOptions);
+        database.exec(queryInsertOptions);
+        getAppSetup(appSetup);
+        return;
+    }
 
     if (optQuery.next()) {
         appSetup.fullscreen = optQuery.value(0).toBool();

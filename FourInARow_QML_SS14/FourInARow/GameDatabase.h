@@ -110,6 +110,12 @@ private:
     QSqlDatabase database;
     const QString querySavedGames;
     const QString queryHighscore;
+    const QString queryInsertPlayerHorst;
+    const QString queryInsertPlayerKerstin;
+    const QString queryCreateTablePlayers;
+    const QString queryCreateTableOptions;
+    const QString queryCreateTableGames;
+    const QString queryInsertOptions;
     // Regular expression identifying a CPU player Tag
     const QRegExp cpuRegExp;
 };

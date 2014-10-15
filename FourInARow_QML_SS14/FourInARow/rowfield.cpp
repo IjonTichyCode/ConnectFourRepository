@@ -48,14 +48,19 @@ RowField::~RowField()
     //**************************
 
     for (int i=0; i<rows; ++i) {
-        delete[] horizontalRows;
+        delete[] horizontalRows[i];
     }
 
     for (int i=0; i<rows-3; ++i) {
-        delete[] verticalRows;
-        delete[] diagonalTopRightRows;
-        delete[] diagonalBottomRightRows;
+        delete[] verticalRows[i];
+        delete[] diagonalTopRightRows[i];
+        delete[] diagonalBottomRightRows[i];
     }
+
+    delete[] horizontalRows;
+    delete[] verticalRows;
+    delete[] diagonalTopRightRows;
+    delete[] diagonalBottomRightRows;
 
 }
 

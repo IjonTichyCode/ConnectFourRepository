@@ -17,11 +17,13 @@ create table options (
 	color1 REAL,
 	useTimer TINYINT,
 	maxTime INT,
+	columns TINYINT,
+	rows TINYINT,
 	language INT
 )
 
-insert into options (fullscreen, antialiasing, width, height, player0Id, player1Id, design, color0, color1, useTimer, maxTime) 
-	values (0, 1, 360, 600, NULL, NULL, 0, 0.1, 0.3, 0, 3)
+insert into options (fullscreen, antialiasing, width, height, player0Id, player1Id, design, color0, color1, useTimer, maxTime, columns, rows, language) 
+	values (0, 1, 360, 600, NULL, NULL, 0, 0.1, 0.3, 0, 3, 7, 6, 0);
 	
 select (fullscreen, antialiasing, width, height, player0Id, player1Id, design, color0, color1, useTimer, maxTime, columns, rows, language) from options
 
@@ -46,6 +48,9 @@ insert into players (name, iscpu, level, wins, losses, ties) values ('Siegfried'
 insert into players (name, iscpu, level, wins, losses, ties) values ('Kunigunde', 0, 0, 1, 6, 1);
 insert into players (name, iscpu, level, wins, losses, ties) values ('Sido', 0, 0, 1, 7, 1);
 insert into players (name, iscpu, level, wins, losses, ties) values ('Emanuel', 0, 0, 1, 8, 1);
+
+insert into players (name, iscpu, level, wins, losses, ties) values ('Horst', 1, 0, 2, 6, 1);
+insert into players (name, iscpu, level, wins, losses, ties) values ('Kerstin', 1, 1, 3, 5, 1);
 
 insert into players (name, iscpu, level) values ('Robert', 0, 0);
 insert into players (name, iscpu, level) values ('Gunther', 0, 0);

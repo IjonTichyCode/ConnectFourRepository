@@ -60,16 +60,6 @@ QMLHighscoreScreen {
 
     property int testCounter: 0
 
-    onBackClicked: {
-        if (testCounter>10) {
-            testCounter=0
-            clear()
-        }else{
-            testCounter += 1
-            addEntry("bla", 5, 2, 2.5)
-        }
-    }
-
     Column {
         anchors.fill: parent
 
